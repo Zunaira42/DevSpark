@@ -6,7 +6,7 @@
     <main class="main">
 
         <!-- Hero Section -->
-        <section id="hero" class="hero section dark-background">
+        <section id="hero" class="hero section dark-background mt-3">
 
             <img src="assets/img/hero-bg.jpg" alt="" data-aos="fade-in">
 
@@ -15,7 +15,7 @@
                 <p data-aos="fade-up" data-aos-delay="200">Everything you need, delivered to your door"</p>
                 <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
                     <a href="#about" class="btn-get-started">View Products</a>
-            </div>
+                </div>
 
         </section><!-- /Hero Section -->
 
@@ -149,25 +149,33 @@
                             <div class="col-lg-4 col-md-6 portfolio-item isotope-item {{ $product->filter }}">
                                 <div class="portfolio-content h-100">
                                     <img src="{{ asset('images/' . $product->image) }}" class="img-fluid w-100"
-                                        style="height: 300px; object-fit: cover;" alt="{{ $product->name }}">
+                                        style="height: 300px; object-fit: cover;" alt="{{ $product->price }}">
                                     <div class="portfolio-info">
-                                        <h4>{{ $product->name }}</h4>
-                                        <p class="price mb-5 bg-success"style="font-size:22px;">
-                                            <strong>Price:</strong>{{ $product->price }}
-                                        </p>
-                                        <p>{{ $product->description }}</p>
-                                        <a href="{{ asset('images/' . $product->image) }}"
-                                            title="{{ $product->name }} - ${{ $product->price }}"
-                                            data-gallery="portfolio-gallery" class="glightbox preview-link">
-                                            <i class="bi bi-zoom-in"></i>
-                                        </a>
+                                        <h4>price={{ $product->price }}</h2>
+                                            <p>{{ $product->description }}</p>
+                                            <a href="{{ asset('images/' . $product->image) }}"
+                                                title="<strong>{{ $product->name }} - ${{ $product->price }}</strong> <br>  {{ $product->description }}"
+                                                data-gallery="portfolio-gallery" class="glightbox preview-link">
+                                                <i class="bi bi-zoom-in"></i>
+                                            </a>
                                     </div>
+                                </div>
+                                <div class="d-flex justify-content-between mt-3">
+                                    <button class="btn btn-success w-50 me-2">
+                                        {{ $product->name }}
+                                    </button>
+                                    <form action="{{ route('cart.add', $product->id) }}" method="POST"
+                                        class="w-50 m-0">
+                                        @csrf
+                                        <button type="submit" class="btn btn-warning w-100">
+                                            Add to Cart
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         @endforeach
                     </div>
                 </div><!-- End Portfolio Container -->
-            </div>
             </div>
         </section>
         <!-- /Portfolio Section -->
