@@ -52,6 +52,7 @@ body {
   color: var(--default-color);
   background-color: var(--background-color);
   font-family: var(--default-font);
+  margin-top: 90px;
 }
 
 a {
@@ -210,14 +211,16 @@ h6 {
 # Global Header
 --------------------------------------------------------------*/
 .header {
-  --background-color: rgba(0, 0, 0, 0);
+  --background-color: rgba(0, 0, 0, 0.6);
   --default-color: #ffffff;
   --heading-color: #ffffff;
   color: var(--default-color);
-  background-color: var(--background-color);
+  /* background-color: var(--background-color); */
+  background-color: rgb(18, 16, 16);
   padding: 20px 0;
   transition: all 0.5s;
   z-index: 997;
+
 }
 
 .header .logo {
@@ -729,7 +732,13 @@ h6 {
   height: 60px;
   animation: animate-preloader 1.5s linear infinite;
 } */
-
+.btn-warning:hover {
+    background-color: #2c2fe5; /* Darker warning shade */
+    color: white;
+    transform: scale(1.05);
+    border: 2px #2c2fe5 solid;
+    transition: all 0.3s ease;
+}
 @keyframes animate-preloader {
   0% {
     transform: rotate(0deg);
