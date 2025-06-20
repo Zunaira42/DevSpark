@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\app\ProductController as ControllersProductController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,7 @@ Route::prefix('admin')->group(function () {
         });
 
         Route::resource('products', ProductController::class);
+        Route::resource('Orders', OrderController::class);
     });
 });
 
