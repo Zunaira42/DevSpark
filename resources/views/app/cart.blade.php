@@ -90,9 +90,10 @@
         .quantity-input[type=number] {
             -moz-appearance: textfield;
         }
-        .btn:hover{
+
+        .btn:hover {
             background-color: blue;
-            border :3px solid white;
+            border: 3px solid white;
         }
     </style>
 @endpush
@@ -145,8 +146,8 @@
 
 
                                             </div>
-                                             <button type="submit"class="btn btn-success mt-4">BUY NOW </button>
-                                                <button type="cancel"class="btn btn-danger mt-4">Cancel </button>
+                                            <a href="{{ route('buy.now') }}" class="btn btn-success mt-4">BUY NOW</a>
+                                            <button type="cancel"class="btn btn-danger mt-4">Cancel </button>
                                         </div>
                                     </div>
                                 </div>
