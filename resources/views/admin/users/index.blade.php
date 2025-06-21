@@ -1,0 +1,69 @@
+@extends('layouts.dashboard')
+@push('style')
+    <style>
+
+    </style>
+@endpush
+
+@section('content')
+    <div class="card-body">
+        <div class="container-fluid">
+            <div class="row mb-3 ">
+                <div class="col-6">
+                    <h2>Users</h2>
+                </div>
+                <div class="col-6 text-end">
+                    <a href="{{ route('users.create') }}" class="btn btn-danger">Create</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    @if (session('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+    @endif
+
+    {{-- Content --}}
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <form>
+                                <table class="table table-striped">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Name</th>
+                                            <th>e-mail</th>
+                                            <th>role</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($users as $user)
+                                            <tr>
+                                                <td>{{ $user->id }}</td>
+                                                <td>{{ $user->name }}</td>
+                                                <td>{{ $user->email }}</td>
+                                                <td>{{$user->role}}</td>
+                                                {{-- <td> <a href="{{ route('products.edit', $product->id) }}">
+                                                        <i class="bi bi-eye-fill"></i>
+                                                </td> --}}
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                    {{-- <div class="col-12 text-end mt-4">
+                        <button class="btn btn-danger align-item-end">Edit</button>
+                    </div> --}}
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- EndContent --}}
+@endsection
