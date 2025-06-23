@@ -32,7 +32,7 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
@@ -40,12 +40,21 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => 'user',
+            // 'role' => 'user',
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
+
+        $intendedFromBuyNow = session('buy_now_redirect', false);
+
+        if ($intendedFromBuyNow) {
+
+            session()->forget('buy_now_redirect');
+
+            return redirect()->route('checkout');
+        }
 
         return redirect(RouteServiceProvider::HOME);
     }

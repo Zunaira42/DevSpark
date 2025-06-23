@@ -56,11 +56,11 @@
             <div class="row">
                 <div class="col-12 bg-black">
                     <div class="main-profile  d-flex justify-content-end">
-                        <span>Name &nbsp;&nbsp;(&nbsp;{{ Auth::user()->name }}&nbsp;)</span>
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <button type="submit">Logout</button>
-                        </form>
+                        {{-- <span>Name &nbsp;&nbsp;(&nbsp;{{ Auth::user()->name }}&nbsp;)</span> --}}
+                        <a href="{{ route('profile.edit') }}">
+                            <button type="button">Profile</button>
+                        </a>
+
                     </div>
                 </div>
             </div>
@@ -74,7 +74,7 @@
         <a href="#"><i class="bi bi-people"></i> Customers</a>
         <a href="#"><i class="bi bi-bar-chart-line"></i> Reports</a>
         <a href="#"><i class="bi bi-gear"></i> Settings</a>
-        <a href="{{route('users.index')}}"><i class="bi bi-person-fill"></i> Users</a>
+        <a href="{{ route('users.index') }}"><i class="bi bi-person-fill"></i> Users</a>
         <div style="margin-left: 220px; padding: 50px;">
         </div>
         {{-- <a href="{{route('franchies.index')}}">Franchies </a> --}}

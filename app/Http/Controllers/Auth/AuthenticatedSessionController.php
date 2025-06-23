@@ -26,11 +26,49 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
-
         $request->session()->regenerate();
 
+        // Get the authenticated user
+        $user = Auth::user();
+
+        // Check if user came from buy-now process
+        $intendedFromBuyNow = session('buy_now_redirect', false);
+
+        if ($intendedFromBuyNow) {
+            // Clear the session flag
+            session()->forget('buy_now_redirect');
+
+            // Redirect to checkout for regular users
+            if (!$this->isAdmin($user)) {
+                return redirect()->route('checkout');
+            }
+        }
+
+        // Check if user is admin
+        if ($this->isAdmin($user)) {
+            return redirect()->route('admin.dashboard');
+        }
+
+        // For regular users, check if they came from buy-now
+        if ($intendedFromBuyNow) {
+            return redirect()->route('checkout');
+        }
+
+        // Default redirect
         return redirect()->intended(RouteServiceProvider::HOME);
     }
+
+    /**
+     * Check if user is admin
+     */
+    private function isAdmin($user): bool
+    {
+        // Adjust this condition based on your admin identification logic
+        return $user->role === 'admin' ||
+            $user->email === 'admin@example.com' ||
+            $user->is_admin === true;
+    }
+
 
     /**
      * Destroy an authenticated session.
@@ -43,6 +81,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/welcome');
     }
 }

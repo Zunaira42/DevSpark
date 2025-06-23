@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 
 use Closure;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class AdminMiddleware
 {
@@ -16,12 +17,19 @@ class AdminMiddleware
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next)
+   public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user()->role === 'admin') {
-            return $next($request);
+        if (!auth()->check()) {
+            return redirect()->route('login');
         }
 
-        abort(403, 'Unauthorized');
+        $user = auth()->user();
+
+        // Check if user is admin - adjust this condition based on your setup
+        if ($user->role !== 'admin' && $user->email !== 'admin@example.com' && !$user->is_admin) {
+            abort(403, 'Unauthorized access');
+        }
+
+        return $next($request);
     }
 }
