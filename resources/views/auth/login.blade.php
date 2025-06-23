@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <style>
+    {{-- <style>
         .login-container {
             max-width: 400px;
             width: 100%;
@@ -27,7 +27,7 @@
             color: #333;
             font-weight: 600;
         }
-    </style>
+    </style> --}}
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 

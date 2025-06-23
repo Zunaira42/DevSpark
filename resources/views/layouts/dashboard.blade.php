@@ -56,7 +56,6 @@
             <div class="row">
                 <div class="col-12 bg-black">
                     <div class="main-profile  d-flex justify-content-end">
-                        {{-- <span>Name &nbsp;&nbsp;(&nbsp;{{ Auth::user()->name }}&nbsp;)</span> --}}
                         <a href="{{ route('profile.edit') }}">
                             <button type="button">Profile</button>
                         </a>

@@ -58,14 +58,11 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
 
         return view('layouts.dashboard');
     })->name('admin.dashboard');
-
-    // Admin Resources (with admin check middleware)
-    Route::middleware(['admin'])->group(function () {
-        Route::resource('products', ProductController::class);
-        Route::resource('users', UserController::class);
-        Route::resource('Orders', OrderController::class);
-    });
+    Route::resource('products', ProductController::class);
+    Route::resource('users', UserController::class);
+    Route::resource('Orders', OrderController::class);
 });
+
 
 // Profile routes (for all authenticated users)
 Route::middleware('auth')->group(function () {
