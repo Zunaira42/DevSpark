@@ -39,6 +39,7 @@
                                             <th>Name</th>
                                             <th>e-mail</th>
                                             <th>role</th>
+                                             <th>View </th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -47,10 +48,16 @@
                                                 <td>{{ $user->id }}</td>
                                                 <td>{{ $user->name }}</td>
                                                 <td>{{ $user->email }}</td>
-                                                <td>{{$user->role}}</td>
-                                                {{-- <td> <a href="{{ route('products.edit', $product->id) }}">
+                                                <td>
+                                                    @if ($user->is_admin)
+                                                        <span class="badge bg-success">Yes</span>
+                                                    @else
+                                                        <span class="badge bg-secondary">No</span>
+                                                    @endif
+                                                </td>
+                                                <td> <a href="{{ route('users.edit', $user->id) }}">
                                                         <i class="bi bi-eye-fill"></i>
-                                                </td> --}}
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>

@@ -146,7 +146,7 @@
 
 
                                             </div>
-                                            <a href="{{ route('buy.now') }}" class="btn btn-success mt-4">BUY NOW</a>
+                                            <a href="{{ route('buy.now.redirect') }}" class="btn btn-success mt-4">BUY NOW</a>
                                             <button type="cancel"class="btn btn-danger mt-4">Cancel </button>
                                         </div>
                                     </div>

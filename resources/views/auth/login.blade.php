@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <style>
+    {{-- <style>
         .login-container {
             max-width: 400px;
             width: 100%;
@@ -27,7 +27,7 @@
             color: #333;
             font-weight: 600;
         }
-    </style>
+    </style> --}}
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -63,6 +63,12 @@
                     <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
                 </label>
             </div>
+            {{-- <div class="flex items-center justify-end mt-4">
+                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+                    href="{{ route('register') }}">
+                    {{ __('have any acount?') }}
+                </a>
+            </div> --}}
 
             <div class="flex items-center justify-end mt-4">
                 @if (Route::has('password.request'))
@@ -76,5 +82,16 @@
                     {{ __('Log in') }}
                 </x-primary-button>
             </div>
+
+
     </form>
+    <div class="mt-6 pt-6 border-t border-gray-200">
+        <div class="text-center">
+            <p class="text-sm text-gray-600 mb-3">Don't have an account?</p>
+            <a href="{{ route('register') }}"
+                class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                Create New Account
+            </a>
+        </div>
+    </div>
 </x-guest-layout>
