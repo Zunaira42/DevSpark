@@ -20,7 +20,7 @@ Route::get('/welcome', function () {
 });
 
 
-Route::get('/products', [ControllersProductController::class, 'index'])->name('product');
+Route::get('/home', [ControllersProductController::class, 'index'])->name('product');
 Route::get('/products/{id}', [ControllersProductController::class, 'show']);
 
 Route::post('/add-to-cart/{id}', [CartController::class, 'addToCart'])->name('cart.add');
@@ -53,7 +53,7 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
         $user = Auth::user();
         if (!$user || ($user->role !== 'admin' && $user->email !== 'admin@gmail.com')) {
-            abort(403, 'Unauthorized access to admin panel');
+            return redirect()->route('home')->with('error', 'You are not authorized to access admin panel.');
         }
 
         return view('layouts.dashboard');

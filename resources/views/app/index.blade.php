@@ -14,7 +14,7 @@
                 <h2 data-aos="fade-up" data-aos-delay="100"><i>Buy Your Favourite Products</i></h2>
                 <p data-aos="fade-up" data-aos-delay="200">Everything you need, delivered to your door"</p>
                 <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
-                    <a href="#about" class="btn-get-started">View Products</a>
+                    <a href="#view-product" class="btn-get-started">View Products</a>
                 </div>
 
         </section><!-- /Hero Section -->
@@ -129,7 +129,7 @@
                 <p>CHECK OUR Porducts</p>
             </div><!-- End Section Title -->
 
-            <div class="container">
+            <div id="view-product" class="container">
 
                 <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
                     <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
@@ -180,7 +180,7 @@
         </section>
         <!-- /Portfolio Section -->
         <!-- Services 2 Section -->
-        <section id="services-2" class="services-2 section light-background">
+        <section id="services" class="services-2 section light-background">
 
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
