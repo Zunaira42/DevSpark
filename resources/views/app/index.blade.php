@@ -6,7 +6,7 @@
     <main class="main">
 
         <!-- Hero Section -->
-        <section id="hero" class="hero section dark-background mt-3">
+        <section id="hero" class="hero section dark-background">
 
             <img src="assets/img/hero-bg.jpg" alt="" data-aos="fade-in">
 

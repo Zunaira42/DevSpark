@@ -95,6 +95,24 @@
             background-color: blue;
             border: 3px solid white;
         }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 120% !important
+            }
+
+            .cart .item {
+                height: 565px;
+            }
+
+            .cart .img-fluid {
+                height: 275px;
+                width: 92%;
+                /* margin: 10px; */
+            }
+
+
+        }
     </style>
 @endpush
 
@@ -113,7 +131,7 @@
                 $cart = session()->get('cart');
             @endphp
 
-            <div class="row d-flex justify-content-center">
+            <div class="row  d-md-flex justify-content-md-center">
                 <div class="col-10">
                     <div class="cart-items p-4 rounded">
                         @if ($cart)
@@ -146,7 +164,8 @@
 
 
                                             </div>
-                                            <a href="{{ route('buy.now.redirect') }}" class="btn btn-success mt-4">BUY NOW</a>
+                                            <a href="{{ route('buy.now.redirect') }}" class="btn btn-success mt-4">BUY
+                                                NOW</a>
                                             <button type="cancel"class="btn btn-danger mt-4">Cancel </button>
                                         </div>
                                     </div>
