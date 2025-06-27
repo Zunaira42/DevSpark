@@ -1,12 +1,14 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\admin\UserController;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\admin\ProductController;
+use App\Http\Controllers\admin\CheckoutController;
+use App\Http\Controllers\app\CheckoutController as AppCheckoutController;
 use App\Http\Controllers\app\ProductController as ControllersProductController;
 
 /*
@@ -25,6 +27,10 @@ Route::get('/products/{id}', [ControllersProductController::class, 'show']);
 
 Route::post('/add-to-cart/{id}', [CartController::class, 'addToCart'])->name('cart.add');
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+
+Route::get('checkout', [AppCheckoutController::class, 'Index'])->name('checkout.index');
+Route::post('checkout', [AppCheckoutController::class, 'store'])->name('checkout.store');
+
 
 // Buy now redirect route (for unauthenticated users)
 Route::get('/buy-now-redirect', function () {
@@ -53,7 +59,7 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
         $user = Auth::user();
         if (!$user || ($user->role !== 'admin' && $user->email !== 'admin@gmail.com')) {
-            return redirect()->route('home')->with('error', 'You are not authorized to access admin panel.');
+            return redirect()->route('product')->with('error', 'You are not authorized to access admin panel.');
         }
 
         return view('layouts.dashboard');
@@ -61,6 +67,7 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     Route::resource('products', ProductController::class);
     Route::resource('users', UserController::class);
     Route::resource('Orders', OrderController::class);
+    Route::resource('checkouts', CheckoutController::class);
 });
 
 

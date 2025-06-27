@@ -27,6 +27,12 @@ class CartController extends Controller
 
         session()->put('cart', $cart);
 
+         if (request()->ajax()) {
+        return response()->json(['status' => 'success', 'message' => 'Added to cart']);
+    }
+    
+
+
         return redirect()->route('cart.index')->with('success', 'Added to cart!');
     }
 

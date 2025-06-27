@@ -70,7 +70,7 @@
         <a href="{{ route('products.index') }}"><i class="bi bi-box-seam"></i> Products</a>
         <a href="#"><i class="bi bi-cart-check"></i> Orders</a>
         <a href="#"><i class="bi bi-tags"></i> Categories</a>
-        <a href="#"><i class="bi bi-people"></i> Customers</a>
+        <a href="{{ route('checkouts.index') }}"><i class="bi bi-cart-check"></i> Checkouts</a>
         <a href="#"><i class="bi bi-bar-chart-line"></i> Reports</a>
         <a href="#"><i class="bi bi-gear"></i> Settings</a>
         <a href="{{ route('users.index') }}"><i class="bi bi-person-fill"></i> Users</a>
