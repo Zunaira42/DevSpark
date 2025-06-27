@@ -165,7 +165,7 @@
                                         {{ $product->name }}
                                     </button>
                                     <form action="{{ route('cart.add', $product->id) }}" method="POST"
-                                        class="w-50 m-0">
+                                        class="add-to-cart-form w-50 m-0">
                                         @csrf
                                         <button type="submit" class="btn btn-warning w-100">
                                             Add to Cart
@@ -482,6 +482,34 @@
 
         </section>
     </main>
+   <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll('.add-to-cart-form').forEach(function (form) {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const token = form.querySelector('input[name="_token"]').value;
+
+                fetch(form.action, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': token,
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert('Product added to cart!');
+                })
+                .catch(error => {
+                    console.error(error);
+                    alert('Kuch ghalat ho gaya.');
+                });
+            });
+        });
+    });
+</script>
+
 </body>
 
 </html>
