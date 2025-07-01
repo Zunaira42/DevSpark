@@ -27,14 +27,14 @@ Route::get('/products/{id}', [ControllersProductController::class, 'show']);
 
 Route::post('/add-to-cart/{id}', [CartController::class, 'addToCart'])->name('cart.add');
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-// Route::post('/buy-selected', [CartController::class, 'buySelected'])->name('buy.selected');
+
 Route::post('/checkout', [AppCheckoutController::class, 'checkout'])->name('checkout');
-
-
 Route::get('checkout', [AppCheckoutController::class, 'Index'])->name('checkout.index');
 Route::post('checkout', [AppCheckoutController::class, 'store'])->name('checkout.store');
 
-
+Route::get('/thank-you', function () {
+    return view('app.thank-you');
+})->name('thank-you');
 // Buy now redirect route (for unauthenticated users)
 Route::get('/buy-now-redirect', function () {
     if (!auth()->check()) {

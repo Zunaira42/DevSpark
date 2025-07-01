@@ -56,6 +56,6 @@ class RegisteredUserController extends Controller
             return redirect()->route('checkout');
         }
 
-       return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect()->intended(RouteServiceProvider::HOME);
     }
 }

@@ -1,9 +1,38 @@
 @extends('app.layouts.app')
 @push('styles')
     <style>
-        body {
-            /* background-color:rgb(244, 229, 201) */
-            background-color: rgb(225, 225, 225)
+        #banner.banner {
+            width: 100%;
+            min-height: 45vh;
+            position: relative;
+            padding: 80px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: -1.2rem;
+        }
+
+        #banner img {
+            position: absolute;
+            inset: 0;
+            display: block;
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .banner:before {
+            content: "";
+            background: color-mix(in srgb, var(--background-color), transparent 30%);
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+        }
+
+        .banner .container {
+            position: relative;
+            z-index: 3;
         }
 
         #checkout p {
@@ -48,16 +77,20 @@
     </style>
 @endpush
 @section('content')
-    <div id="checkout" class="checkout">
+    <section id="banner" class="banner section dark-background">
+        <img src="assets/img/main-bg.jpg" alt="" data-aos="fade-in">
+        <div class="container">
+            <h1 data-aos="fade-up" data-aos-delay="100"> Almost There!</h1>
+            <p data-aos="fade-up" data-aos-delay="200">Just one more step to get your order delivered.
+            </p>
+    </section>
+
+    <div id="checkout" class="checkout section light-background">
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <p>Check-out</p>
-                </div>
-                <div class="col-12">
                     <form action="{{ route('checkout.store') }}" method="POST">
                         @csrf
-
 
                         <div class="card mb-5">
                             <div class="card-body">
@@ -131,8 +164,10 @@
                                 </div>
                             </div>
 
-                            <div class="col-12  mt-3 mb-5 mx-3 ">
-                                <button type="submit" class="btn btn-danger">Submit</button>
+                            <div class="col-12 d-flex justify-content-space-between mt-3 mb-5 mx-3 ">
+                                <button type="submit" class="btn btn-danger ">Submit</button>
+
+                                <button type="submit" class="btn btn-danger mx-5">Cancel</button>
                             </div>
                         </div>
                     </form>
