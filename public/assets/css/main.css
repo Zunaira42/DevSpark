@@ -928,7 +928,7 @@ section,
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 0.8rem;
+    margin-top: 0.5rem;
 }
 
 .hero img {
@@ -1871,3 +1871,18 @@ section,
 /*--------------------------------------------------------------
 # Starter Section Section
 --------------------------------------------------------------*/
+#message {
+    position: fixed;
+    top: 50%;
+    right: 50%;
+    background-color: #28a745;
+    color: #fff;
+    padding: 12px 18px;
+    border-radius: 6px;
+    display: none;
+    /* z-index: 9999; */
+    font-weight: 500;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    justify-content: center;
+}
