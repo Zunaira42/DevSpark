@@ -35,6 +35,6 @@ class CheckoutController extends Controller
 
         Checkout::create($validated);
 
-        return redirect()->route('product')->with('success', 'Order placed successfully!');
+        return redirect()->route('thank-you')->with('success', 'Order placed successfully!');
     }
 }

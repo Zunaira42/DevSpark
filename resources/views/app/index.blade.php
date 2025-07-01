@@ -143,35 +143,41 @@
                         <li data-filter=".filter-books">Books</li>
                         <li data-filter=".filter-toys">Toys</li>
                     </ul>
-
                     <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
                         @foreach ($products as $product)
                             <div class="col-lg-4 col-md-6 portfolio-item isotope-item {{ $product->filter }}">
-                                <div class="portfolio-content h-100">
-                                    <img src="{{ asset('images/' . $product->image) }}" class="img-fluid w-100"
-                                        style="height: 300px; object-fit: cover;" alt="{{ $product->price }}">
-                                    <div class="portfolio-info">
-                                        <h4>price={{ $product->price }}</h2>
+                                <div class="card h-100">
+                                    <div class="portfolio-content">
+                                        <img src="{{ asset('images/' . $product->image) }}" class="img-fluid w-100"
+                                            style="height: 300px; object-fit: cover;" alt="{{ $product->price }}">
+                                        <div class="portfolio-info">
+                                            <h4>price={{ $product->price }}</h4>
                                             <p>{{ $product->description }}</p>
                                             <a href="{{ asset('images/' . $product->image) }}"
                                                 title="<strong>{{ $product->name }} - ${{ $product->price }}</strong> <br>  {{ $product->description }}"
                                                 data-gallery="portfolio-gallery" class="glightbox preview-link">
                                                 <i class="bi bi-zoom-in"></i>
                                             </a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="d-flex justify-content-between mt-3">
-                                    <button class="btn btn-success w-50 me-2">
-                                        {{ $product->name }}
-                                    </button>
-                                    <form action="{{ route('cart.add', $product->id) }}" method="POST"
-                                        class="add-to-cart-form w-50 m-0">
-                                        @csrf
-                                        <button type="submit" class="btn btn-warning w-100">
-                                            Add to Cart
-                                        </button>
-                                    </form>
-                                </div>
+                                    <!-- Card Body: just wrapping name + buttons -->
+                                    <div class="card-body">
+                                        <h5 class="text-center mb-3">{{ $product->name }}</h5>
+                                        <div class="d-flex justify-content-between">
+                                            <a href="{{route('checkout')}}" class="btn btn-success w-50 me-2">
+                                                Buy-now
+                                            </a>
+                                            <form action="{{ route('cart.add', $product->id) }}" method="POST"
+                                                class="add-to-cart-form w-50 m-0">
+                                                @csrf
+                                                <button type="submit" class="btn btn-warning w-100">
+                                                    Add to Cart
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                </div> <!-- End card -->
                             </div>
                         @endforeach
                     </div>
@@ -179,7 +185,6 @@
             </div>
         </section>
         <!-- /Portfolio Section -->
-        <!-- Services 2 Section -->
         <section id="services" class="services-2 section light-background">
 
             <!-- Section Title -->
@@ -475,41 +480,43 @@
                             </div>
                         </form>
                     </div>
-
                 </div>
-
             </div>
-
         </section>
     </main>
-   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        document.querySelectorAll('.add-to-cart-form').forEach(function (form) {
-            form.addEventListener('submit', function (e) {
-                e.preventDefault();
+    <div id="message">Added to Cart!</div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll('.add-to-cart-form').forEach(function(form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
 
-                const token = form.querySelector('input[name="_token"]').value;
+                    const token = form.querySelector('input[name="_token"]').value;
 
-                fetch(form.action, {
-                    method: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': token,
-                        'X-Requested-With': 'XMLHttpRequest'
-                    }
-                })
-                .then(response => response.json())
-                .then(data => {
-                    alert('Product added to cart!');
-                })
-                .catch(error => {
-                    console.error(error);
-                    alert('Kuch ghalat ho gaya.');
+                    fetch(form.action, {
+                            method: 'POST',
+                            headers: {
+                                'X-CSRF-TOKEN': token,
+                                'X-Requested-With': 'XMLHttpRequest'
+                            }
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            const alertBox = document.getElementById('message');
+                            alertBox.innerText = data.message;
+                            alertBox.style.display = 'block';
+                            setTimeout(() => {
+                                alertBox.style.display = 'none';
+                            }, 3000);
+                        })
+                        .catch(error => {
+                            console.error(error);
+                            alert('something wrong.');
+                        });
                 });
             });
         });
-    });
-</script>
-
+    </script>
 </body>
 
 </html>
