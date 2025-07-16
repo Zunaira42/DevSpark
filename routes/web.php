@@ -20,6 +20,9 @@ use App\Http\Controllers\app\ProductController as ControllersProductController;
 Route::get('/welcome', function () {
     return view('layouts.welcome');
 });
+Route::get('/products', function () {
+    return view('app.product');
+})->name('products');
 
 
 Route::get('/home', [ControllersProductController::class, 'index'])->name('home');
