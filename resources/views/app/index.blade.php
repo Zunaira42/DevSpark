@@ -3,9 +3,6 @@
 
     <body class="index-page">
 
-
-        <main class="main">
-
             <!-- Hero Section -->
             <section id="hero" class="hero section dark-background">
                 <img src="{{ asset('assets/img/cart-img.jpg') }}"
@@ -32,9 +29,9 @@
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
                             <h3>Everything You Need, All in One Store</h3>
                             <img src="assets/img/product.jpg" class="img-fluid rounded-4 mb-4" alt="">
-                            <p>Explore a wide range of quality products at unbeatable prices. From electronics and fashion
+                            <p class="text">Explore a wide range of quality products at unbeatable prices. From electronics and fashion
                                 to home essentials — we've got you covered.</p>
-                            <p>Enjoy a smooth shopping experience with fast delivery, secure checkout, and 24/7 customer
+                            <p class="text">Enjoy a smooth shopping experience with fast delivery, secure checkout, and 24/7 customer
                                 support. Whether you're browsing or buying, our store is designed for your convenience.</p>
                         </div>
                         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="250">
@@ -50,7 +47,7 @@
                                     <li><i class="bi bi-check-circle-fill"></i> <span>Quality products at competitive
                                             prices, backed by customer satisfaction.</span></li>
                                 </ul>
-                                <p>
+                                <p class="text">
                                     Whether you're looking for the latest tech, trendy fashion, or home essentials — we’ve
                                     got everything you need in one place.
                                 </p>

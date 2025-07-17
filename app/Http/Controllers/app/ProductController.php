@@ -9,17 +9,16 @@ use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function products()
     {
         $products = Product::where('stock', true)->with('category')->get();
-         $categories = Category::all();
 
-        return view('app.index', compact('products','categories'));
+        return view('app.product', compact('products'));
     }
 
     public function show($id)
     {
-        $product = Product::where('stock', true)->findOrFail($id);
-        return view('app.index.show', compact('product'));
+        $products = Product::where('stock', true)->findOrFail($id);
+        return view('app.product', compact('products'));
     }
 }

@@ -1031,6 +1031,10 @@ section,
     font-size: 28px;
     margin-bottom: 20px;
 }
+.about .text {
+    font-weight: 500;
+    font-size: 18px;
+}
 
 .about .fst-italic {
     color: color-mix(in srgb, var(--default-color), var(--contrast-color) 50%);

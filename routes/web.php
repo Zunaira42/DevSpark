@@ -20,13 +20,11 @@ use App\Http\Controllers\app\ProductController as ControllersProductController;
 Route::get('/welcome', function () {
     return view('layouts.welcome');
 });
-Route::get('/products', function () {
-    return view('app.product');
-})->name('products');
+Route::get('/home', function () {
+    return view('app.index');
+})->name('home');
 
-
-Route::get('/home', [ControllersProductController::class, 'index'])->name('home');
-Route::get('/products/{id}', [ControllersProductController::class, 'show']);
+Route::get('/products', [ControllersProductController::class, 'products'])->name('products');
 
 Route::post('/add-to-cart/{id}', [CartController::class, 'addToCart'])->name('cart.add');
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
