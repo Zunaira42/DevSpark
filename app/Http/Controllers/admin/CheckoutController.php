@@ -4,7 +4,9 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Checkout;
+use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
 {
@@ -48,6 +50,13 @@ class CheckoutController extends Controller
             'zip' => 'required',
         ]);
         Checkout::create($validated);
+        Order::create([
+            'user_id' => Auth::id(),
+            'total_price' => $request->selected_total_price,
+            'status' => 'pending',
+
+        ]);
+
         return redirect()->route('checkouts.index')->with('success', 'Checkout created successfully.');
     }
 

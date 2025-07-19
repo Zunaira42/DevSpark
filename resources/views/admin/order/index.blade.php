@@ -4,10 +4,10 @@
         <div class="container-fluid">
             <div class="row mb-3 ">
                 <div class="col-6">
-                    <h2>Products</h2>
+                    <h2>Order</h2>
                 </div>
                 <div class="col-6 text-end">
-                    <a href="{{ route('products.create') }}" class="btn btn-danger">Create</a>
+                    <a href="{{ route('orders.create') }}" class="btn btn-danger">Create</a>
                 </div>
             </div>
         </div>
@@ -28,20 +28,20 @@
                                     <thead class="table-dark">
                                         <tr>
                                             <th>#</th>
-                                            <th>Product-Name</th>
-                                            <th>Price</th>
-                                            <th>Stock</th>
-                                            <th>View </th>
+                                            <th>User_id</th>
+                                            <th>Total Price</th>
+                                            <th>Status</th>
+                                            <th>View</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($products as $product)
+                                        @foreach ($orders as $order)
                                             <tr>
-                                                <td>{{ $product->id }}</td>
-                                                <td>{{ $product->name }}</td>
-                                                <td>{{ $product->price }}</td>
-                                                <td>{{ $product->stock }}</td>
-                                                <td> <a href="{{ route('products.edit', $product->id) }}">
+                                                <td>{{ $order->id }}</td>
+                                                <td>{{ $order->user_id }}</td>
+                                                <td>{{ $order->total_price }}</td>
+                                                <td>{{ $product->status}}</td>
+                                                <td> <a href="{{ route('orders.edit', $order->id) }}">
                                                         <i class="bi bi-eye-fill"></i>
                                                 </td>
                                             </tr>

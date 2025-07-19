@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\OrderController;
+use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\admin\ProductController;
@@ -20,13 +20,16 @@ use App\Http\Controllers\app\ProductController as ControllersProductController;
 Route::get('/welcome', function () {
     return view('layouts.welcome');
 });
+Route::get('/home', function () {
+    return view('app.index');
+})->name('home');
 
-
-Route::get('/home', [ControllersProductController::class, 'index'])->name('home');
-Route::get('/products/{id}', [ControllersProductController::class, 'show']);
+Route::get('/products', [ControllersProductController::class, 'products'])->name('products');
 
 Route::post('/add-to-cart/{id}', [CartController::class, 'addToCart'])->name('cart.add');
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/update-cart-quantity', [CartController::class, 'updateQuantity'])->name('cart.updateQuantity');
+
 
 Route::post('/checkout', [AppCheckoutController::class, 'checkout'])->name('checkout');
 Route::get('checkout', [AppCheckoutController::class, 'Index'])->name('checkout.index');
@@ -69,7 +72,7 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     })->name('admin.dashboard');
     Route::resource('products', ProductController::class);
     Route::resource('users', UserController::class);
-    Route::resource('Orders', OrderController::class);
+    Route::resource('orders', OrderController::class);
     Route::resource('checkouts', CheckoutController::class);
 });
 

@@ -1,10 +1,4 @@
 @extends('layouts.dashboard')
-@push('style')
-    <style>
-
-    </style>
-@endpush
-
 @section('content')
     <div class="card-body">
         <div class="container-fluid">
@@ -13,7 +7,7 @@
                     <h2>Users</h2>
                 </div>
                 <div class="col-6 text-end">
-                    <a href="{{ route('users.create') }}" class="btn btn-danger">Create</a>
+                    {{-- <a href="{{ route('users.create') }}" class="btn btn-danger">Create</a> --}}
                 </div>
             </div>
         </div>
@@ -23,8 +17,6 @@
             {{ session('message') }}
         </div>
     @endif
-
-    {{-- Content --}}
     <div class="content">
         <div class="container-fluid">
             <div class="row">
@@ -65,12 +57,8 @@
                             </form>
                         </div>
                     </div>
-                    {{-- <div class="col-12 text-end mt-4">
-                        <button class="btn btn-danger align-item-end">Edit</button>
-                    </div> --}}
                 </div>
             </div>
         </div>
     </div>
-    {{-- EndContent --}}
 @endsection

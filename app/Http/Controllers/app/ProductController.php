@@ -3,20 +3,22 @@
 namespace App\Http\Controllers\app;
 
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function products()
     {
-        $products = Product::where('stock', true)->get()->all();
-        return view('app.index', compact('products'));
+        $products = Product::where('stock', true)->with('category')->get();
+
+        return view('app.product', compact('products'));
     }
 
     public function show($id)
     {
-        $product = Product::where('stock', true)->findOrFail($id);
-        return view('app.index.show', compact('product'));
+        $products = Product::where('stock', true)->findOrFail($id);
+        return view('app.product', compact('products'));
     }
 }
