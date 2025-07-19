@@ -30,7 +30,7 @@ class CartController extends Controller
          if (request()->ajax()) {
         return response()->json(['status' => 'success', 'message' => 'Added to cart']);
     }
-    
+
 
 
         return redirect()->route('cart.index')->with('success', 'Added to cart!');
@@ -40,4 +40,21 @@ class CartController extends Controller
     {
         return view('app.cart');
     }
+    public function updateQuantity(Request $request)
+{
+    $itemKey = $request->item_key;
+    $quantity = $request->quantity;
+
+    $cart = session()->get('cart', []);
+
+    if (isset($cart[$itemKey])) {
+        $cart[$itemKey]['quantity'] = $quantity;
+        session()->put('cart', $cart);
+
+        return response()->json(['success' => true, 'message' => 'Quantity updated']);
+    }
+
+    return response()->json(['success' => false, 'message' => 'Item not found']);
+}
+
 }

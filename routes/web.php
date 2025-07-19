@@ -28,6 +28,8 @@ Route::get('/products', [ControllersProductController::class, 'products'])->name
 
 Route::post('/add-to-cart/{id}', [CartController::class, 'addToCart'])->name('cart.add');
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/update-cart-quantity', [CartController::class, 'updateQuantity'])->name('cart.updateQuantity');
+
 
 Route::post('/checkout', [AppCheckoutController::class, 'checkout'])->name('checkout');
 Route::get('checkout', [AppCheckoutController::class, 'Index'])->name('checkout.index');
