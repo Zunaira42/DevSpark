@@ -1,6 +1,9 @@
 /* Fonts */
 :root {
-    --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
     --heading-font: "Raleway", sans-serif;
     --nav-font: "Inter", sans-serif;
 }
@@ -144,7 +147,10 @@ h6 {
 .pulsating-play-btn {
     width: 94px;
     height: 94px;
-    background: radial-gradient(var(--accent-color) 50%, color-mix(in srgb, var(--accent-color), transparent 75%) 52%);
+    background: radial-gradient(
+        var(--accent-color) 50%,
+        color-mix(in srgb, var(--accent-color), transparent 75%) 52%
+    );
     border-radius: 50%;
     display: block;
     position: relative;
@@ -231,7 +237,6 @@ h6 {
     padding: 20px 0;
     transition: all 0.5s;
     z-index: 997;
-
 }
 
 .header .logo {
@@ -316,12 +321,12 @@ h6 {
         position: relative;
     }
 
-    .navmenu>ul>li {
+    .navmenu > ul > li {
         white-space: nowrap;
         padding: 15px 14px;
     }
 
-    .navmenu>ul>li:last-child {
+    .navmenu > ul > li:last-child {
         padding-right: 0;
     }
 
@@ -349,7 +354,7 @@ h6 {
         transition: 0.3s;
     }
 
-    .navmenu>ul>li>a:before {
+    .navmenu > ul > li > a:before {
         content: "";
         position: absolute;
         height: 2px;
@@ -362,13 +367,13 @@ h6 {
     }
 
     .navmenu a:hover:before,
-    .navmenu li:hover>a:before,
+    .navmenu li:hover > a:before,
     .navmenu .active:before {
         visibility: visible;
         width: 100%;
     }
 
-    .navmenu li:hover>a,
+    .navmenu li:hover > a,
     .navmenu .active,
     .navmenu .active:focus {
         color: color-mix(in srgb, var(--nav-color) 90%, white 15%);
@@ -407,11 +412,11 @@ h6 {
 
     .navmenu .dropdown ul a:hover,
     .navmenu .dropdown ul .active:hover,
-    .navmenu .dropdown ul li:hover>a {
+    .navmenu .dropdown ul li:hover > a {
         color: var(--nav-dropdown-hover-color);
     }
 
-    .navmenu .dropdown:hover>ul {
+    .navmenu .dropdown:hover > ul {
         opacity: 1;
         top: 100%;
         visibility: visible;
@@ -423,7 +428,7 @@ h6 {
         visibility: hidden;
     }
 
-    .navmenu .dropdown .dropdown:hover>ul {
+    .navmenu .dropdown .dropdown:hover > ul {
         opacity: 1;
         top: 0;
         left: -100%;
@@ -456,7 +461,8 @@ h6 {
         margin: 0;
         border-radius: 6px;
         background-color: var(--nav-mobile-background-color);
-        border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+        border: 1px solid
+            color-mix(in srgb, var(--default-color), transparent 90%);
         box-shadow: none;
         overflow-y: auto;
         transition: 0.3s;
@@ -489,7 +495,11 @@ h6 {
         justify-content: center;
         border-radius: 50%;
         transition: 0.3s;
-        background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
+        background-color: color-mix(
+            in srgb,
+            var(--accent-color),
+            transparent 90%
+        );
     }
 
     .navmenu a i:hover,
@@ -525,7 +535,7 @@ h6 {
         background-color: rgba(33, 37, 41, 0.1);
     }
 
-    .navmenu .dropdown>.dropdown-active {
+    .navmenu .dropdown > .dropdown-active {
         display: block;
         background-color: rgba(33, 37, 41, 0.03);
     }
@@ -552,11 +562,39 @@ h6 {
         transition: 0.3s;
     }
 
-    .mobile-nav-active .navmenu>ul {
+    .mobile-nav-active .navmenu > ul {
         display: block;
     }
 }
+.products-image{
+    border-radius: 20px;
 
+}
+.products-image .hover-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+.products-image:hover .hover-img {
+    opacity: 1;
+}
+.products-image:hover .img-fluid {
+    opacity: 0;
+}
+.products-image .img-fluid {
+    display: block;
+}
+.products-image img {
+    width: 100%;
+    height: auto;
+    transition: opacity 0.4s ease;
+    display: block;
+}
+.products-image {
+    position: relative;
+    overflow: hidden;
+}
 /*--------------------------------------------------------------
 # Global Footer
 --------------------------------------------------------------*/
@@ -569,7 +607,8 @@ h6 {
 
 .footer .footer-top {
     padding-top: 50px;
-    border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+    border-top: 1px solid
+        color-mix(in srgb, var(--default-color), transparent 90%);
 }
 
 .footer .footer-about .logo {
@@ -678,7 +717,7 @@ h6 {
     border-color: var(--accent-color);
 }
 
-.footer .footer-newsletter .newsletter-form input[type=email] {
+.footer .footer-newsletter .newsletter-form input[type="email"] {
     border: 0;
     padding: 4px;
     width: 100%;
@@ -686,11 +725,11 @@ h6 {
     color: var(--default-color);
 }
 
-.footer .footer-newsletter .newsletter-form input[type=email]:focus-visible {
+.footer .footer-newsletter .newsletter-form input[type="email"]:focus-visible {
     outline: none;
 }
 
-.footer .footer-newsletter .newsletter-form input[type=submit] {
+.footer .footer-newsletter .newsletter-form input[type="submit"] {
     border: 0;
     font-size: 16px;
     padding: 0 20px;
@@ -701,13 +740,14 @@ h6 {
     border-radius: 0 4px 4px 0;
 }
 
-.footer .footer-newsletter .newsletter-form input[type=submit]:hover {
+.footer .footer-newsletter .newsletter-form input[type="submit"]:hover {
     background: color-mix(in srgb, var(--accent-color), transparent 20%);
 }
 
 .footer .copyright {
     padding: 25px 0;
-    border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+    border-top: 1px solid
+        color-mix(in srgb, var(--default-color), transparent 90%);
 }
 
 .footer .copyright p {
@@ -842,11 +882,11 @@ h6 {
     font-weight: 400;
 }
 
-.page-title .breadcrumbs ol li+li {
+.page-title .breadcrumbs ol li + li {
     padding-left: 10px;
 }
 
-.page-title .breadcrumbs ol li+li::before {
+.page-title .breadcrumbs ol li + li::before {
     content: "/";
     display: inline-block;
     padding-right: 10px;
@@ -866,7 +906,6 @@ section,
 }
 
 @media (max-width: 1199px) {
-
     section,
     .section {
         scroll-margin-top: 76px;
@@ -1011,7 +1050,6 @@ section,
 @media (max-width: 768px) {
     .hero {
         margin-top: -20px;
-
     }
 
     .hero h2 {
@@ -1127,7 +1165,6 @@ section,
 .btn-product:hover::after {
     opacity: 1;
 }
-
 
 /*--------------------------------------------------------------
 # Services Section
@@ -1738,8 +1775,8 @@ section,
     }
 }
 
-.contact .php-email-form input[type=text],
-.contact .php-email-form input[type=email],
+.contact .php-email-form input[type="text"],
+.contact .php-email-form input[type="email"],
 .contact .php-email-form textarea {
     font-size: 14px;
     padding: 10px 15px;
@@ -1750,19 +1787,19 @@ section,
     border-color: color-mix(in srgb, var(--default-color), transparent 80%);
 }
 
-.contact .php-email-form input[type=text]:focus,
-.contact .php-email-form input[type=email]:focus,
+.contact .php-email-form input[type="text"]:focus,
+.contact .php-email-form input[type="email"]:focus,
 .contact .php-email-form textarea:focus {
     border-color: var(--accent-color);
 }
 
-.contact .php-email-form input[type=text]::placeholder,
-.contact .php-email-form input[type=email]::placeholder,
+.contact .php-email-form input[type="text"]::placeholder,
+.contact .php-email-form input[type="email"]::placeholder,
 .contact .php-email-form textarea::placeholder {
     color: color-mix(in srgb, var(--default-color), transparent 70%);
 }
 
-.contact .php-email-form button[type=submit] {
+.contact .php-email-form button[type="submit"] {
     color: var(--contrast-color);
     background: var(--accent-color);
     border: 0;
@@ -1771,7 +1808,7 @@ section,
     border-radius: 50px;
 }
 
-.contact .php-email-form button[type=submit]:hover {
+.contact .php-email-form button[type="submit"]:hover {
     background: color-mix(in srgb, var(--accent-color), transparent 20%);
 }
 
@@ -1787,14 +1824,20 @@ section,
     position: relative;
 }
 
-.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet {
+.portfolio-details
+    .portfolio-details-slider
+    .swiper-pagination
+    .swiper-pagination-bullet {
     width: 12px;
     height: 12px;
     background-color: color-mix(in srgb, var(--default-color), transparent 85%);
     opacity: 1;
 }
 
-.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet-active {
+.portfolio-details
+    .portfolio-details-slider
+    .swiper-pagination
+    .swiper-pagination-bullet-active {
     background-color: var(--accent-color);
 }
 
@@ -1809,7 +1852,8 @@ section,
     font-weight: 700;
     margin-bottom: 20px;
     padding-bottom: 20px;
-    border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
+    border-bottom: 1px solid
+        color-mix(in srgb, var(--default-color), transparent 85%);
 }
 
 .portfolio-details .portfolio-info ul {
@@ -1818,7 +1862,7 @@ section,
     font-size: 15px;
 }
 
-.portfolio-details .portfolio-info ul li+li {
+.portfolio-details .portfolio-info ul li + li {
     margin-top: 10px;
 }
 
@@ -1851,7 +1895,8 @@ section,
     display: block;
     line-height: 1;
     padding: 8px 0 8px 15px;
-    border-left: 3px solid color-mix(in srgb, var(--default-color), transparent 70%);
+    border-left: 3px solid
+        color-mix(in srgb, var(--default-color), transparent 70%);
     margin: 20px 0;
     color: color-mix(in srgb, var(--default-color), transparent 20%);
     transition: 0.3s;

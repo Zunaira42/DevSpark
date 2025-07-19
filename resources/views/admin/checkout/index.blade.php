@@ -1,10 +1,4 @@
 @extends('layouts.dashboard')
-@push('style')
-    <style>
-
-    </style>
-@endpush
-
 @section('content')
     <div class="card-body">
         <div class="container-fluid">
@@ -23,8 +17,6 @@
             {{ session('message') }}
         </div>
     @endif
-
-    {{-- Content --}}
     <div class="content">
         <div class="container-fluid">
             <div class="row">
@@ -42,9 +34,6 @@
                                             <th>Phone_num</th>
                                             <th>Address </th>
                                             <th>Pay-method</th>
-                                            {{-- <th>city</th>
-                                            <th>state</th>
-                                            <th>zip</th> --}}
                                             <th>view</th>
                                         </tr>
                                     </thead>
@@ -58,9 +47,6 @@
                                                 <td>{{ $checkout->phone_num }}</td>
                                                 <td>{{ $checkout->address }}</td>
                                                 <td>{{ $checkout->payment_method }}</td>
-                                                {{-- <td>{{ $checkout->city }}</td>
-                                                <td>{{ $checkout->state }}</td>
-                                                <td>{{ $checkout->zip }}</td> --}}
                                                 <td> <a href="{{ route('checkouts.edit', $checkout->id) }}">
                                                         <i class="bi bi-eye-fill"></i>
                                                  </td>
@@ -71,12 +57,8 @@
                             </form>
                         </div>
                     </div>
-                    {{-- <div class="col-12 text-end mt-4">
-                        <button class="btn btn-danger align-item-end">Edit</button>
-                    </div> --}}
                 </div>
             </div>
         </div>
     </div>
-    {{-- EndContent --}}
 @endsection

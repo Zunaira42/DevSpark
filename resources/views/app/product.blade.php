@@ -63,6 +63,7 @@
             text-align: center;
             height: 450px;
         }
+
         .product-img img {
             width: 100%;
             height: 250px;
@@ -114,6 +115,13 @@
             background-color: #5cb85c;
             color: white;
         }
+
+        .btn-added {
+            background-color: #0d1012 !important;
+            color: #f7eaea !important;
+            border: 1px solid #111314;
+            transition: all 0.3s ease;
+        }
     </style>
 @endpush
 
@@ -144,10 +152,11 @@
                                     </div>
                                     <div class="product-buttons mt-3">
                                         <form method="POST" action="{{ route('cart.add', $product->id) }}"
-                                            class="d-inline">
+                                            class="d-inline add-to-cart-form">
                                             @csrf
                                             <button type="submit" class="btn btn-cart">Add to Cart</button>
                                         </form>
+
                                         <a href="{{ route('checkout', $product->id) }}" class="btn btn-buy">Buy Now</a>
                                     </div>
                                 </div>
@@ -159,3 +168,40 @@
         </div>
     </section>
 @endsection
+@push('scripts')
+    <script>
+        document.querySelectorAll('.add-to-cart-form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const button = form.querySelector('.btn-cart');
+                const formData = new FormData(form);
+
+                fetch(form.action, {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
+                                .getAttribute('content'),
+                        },
+                        body: formData
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            button.disabled = true;
+                            button.innerHTML =
+                                `<i class="bi bi-check-circle me-1"></i> Added Successfully`;
+                            button.classList.remove('btn-cart');
+                            button.classList.add('btn-added');
+
+                        } else {
+                            button.textContent = "Error";
+                        }
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        button.textContent = "Failed";
+                    });
+            });
+        });
+    </script>
+@endpush

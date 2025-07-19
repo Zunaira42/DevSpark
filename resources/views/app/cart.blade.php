@@ -25,7 +25,7 @@
 
         .banner:before {
             content: "";
-            background: color-mix(in srgb, var(--background-color), transparent 30%);
+            background: color-mix(in srgb, var(--background-color), transparent 50%);
             position: absolute;
             inset: 0;
             z-index: 2;
@@ -239,8 +239,6 @@
                                                             for="select-{{ $key }}">Select
                                                             to Buy</label>
                                                     </div>
-                                                    <a href="{{ route('home') }}"
-                                                        class="btn btn-danger mt-4 w-75">Cancel</a>
                                                 </div>
                                             </div>
                                         </div>

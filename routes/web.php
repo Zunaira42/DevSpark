@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\OrderController;
+use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\admin\ProductController;
@@ -70,7 +70,7 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     })->name('admin.dashboard');
     Route::resource('products', ProductController::class);
     Route::resource('users', UserController::class);
-    Route::resource('Orders', OrderController::class);
+    Route::resource('orders', OrderController::class);
     Route::resource('checkouts', CheckoutController::class);
 });
 
