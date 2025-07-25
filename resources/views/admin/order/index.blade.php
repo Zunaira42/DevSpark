@@ -40,7 +40,7 @@
                                                 <td>{{ $order->id }}</td>
                                                 <td>{{ $order->user_id }}</td>
                                                 <td>{{ $order->total_price }}</td>
-                                                <td>{{ $product->status}}</td>
+                                                <td>{{ $order->status }}</td>
                                                 <td> <a href="{{ route('orders.edit', $order->id) }}">
                                                         <i class="bi bi-eye-fill"></i>
                                                 </td>

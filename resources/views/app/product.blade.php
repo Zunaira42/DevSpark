@@ -151,9 +151,12 @@
                                         </div>
                                     </div>
                                     <div class="product-buttons mt-3">
-                                        <form method="POST" action="{{ route('cart.add', $product->id) }}"
+                                        <form name="addtocart-form" method="POST" action="{{ route('cart.add') }}"
                                             class="d-inline add-to-cart-form">
                                             @csrf
+                                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                            <input type="hidden" name="name" value="{{ $product->name }}">
+                                            <input type="hidden" name="price" value="{{ $product->price }}">
                                             <button type="submit" class="btn btn-cart">Add to Cart</button>
                                         </form>
 

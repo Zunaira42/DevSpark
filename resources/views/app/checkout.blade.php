@@ -165,9 +165,9 @@
                             </div>
 
                             <div class="col-12 d-flex justify-content-space-between mt-3 mb-5 mx-3 ">
-                                <button type="submit" class="btn btn-danger ">Submit</button>
+                                <button type="submit" class="btn btn-outline-danger">Submit</button>
+                                <a href="{{ route('home') }}" class="btn btn-danger mx-5">Cancel</a>
 
-                                <button type="submit" class="btn btn-danger mx-5">Cancel</button>
                             </div>
                         </div>
                     </form>
