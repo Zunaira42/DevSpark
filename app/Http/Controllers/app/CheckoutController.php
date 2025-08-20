@@ -19,7 +19,6 @@ class CheckoutController extends Controller
 
     public function store(Request $request)
     {
-        // Step 1: Validate checkout form
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email',
@@ -31,18 +30,15 @@ class CheckoutController extends Controller
             'zip' => 'required|string|max:10',
         ]);
 
-        // Step 2: Get cart from session
         $cart = session('cart');
         if (!$cart || count($cart) === 0) {
             return redirect()->back()->with('error', 'Your cart is empty.');
         }
 
-        // Step 3: Normalize cart if it's a collection
         if ($cart instanceof \Illuminate\Support\Collection) {
             $cart = $cart->toArray();
         }
 
-        // Step 4: Calculate total and prepare valid items
         $total = 0;
         $validItems = [];
 
@@ -63,18 +59,13 @@ class CheckoutController extends Controller
             $total += $price * $quantity;
         }
 
-        if (count($validItems) === 0) {
-            return redirect()->back()->with('error', 'No valid items in cart.');
-        }
-
-        // Step 5: Create Order
+     
         $order = Order::create([
             'user_id' => Auth::id(),
             'total_price' => $total,
             'status' => 'pending',
         ]);
 
-        // Step 6: Create OrderItems
         foreach ($validItems as $item) {
             OrderItem::create([
                 'order_id' => $order->id,
@@ -84,7 +75,6 @@ class CheckoutController extends Controller
             ]);
         }
 
-        // Step 7: Store checkout info
         Checkout::create([
             'order_id' => $order->id,
             'name' => $validated['name'],

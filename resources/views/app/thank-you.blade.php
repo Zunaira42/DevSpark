@@ -44,7 +44,7 @@
     </style>
 </head>
 
-<body class="min-h-screen celebration">
+<body class="min-h-screen celebration mt-5">
     <!-- Floating particles background -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
         <div class="absolute top-20 left-20 w-4 h-4 bg-white rounded-full opacity-20 floating-animation"></div>

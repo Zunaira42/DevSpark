@@ -171,7 +171,7 @@
         .qty-control {
             display: flex;
             align-items: center;
-              justify-content: center;
+            justify-content: center;
             gap: 0.5rem;
             background: #f7fafc;
             border-radius: 12px;
@@ -574,7 +574,7 @@
                                 <tr>
                                     <th>Product</th>
                                     <th></th>
-                                    <th>Price</th>
+                                    <th>Unit-price</th>
                                     <th>Quantity</th>
                                     <th>Subtotal</th>
                                     <th></th>
@@ -601,73 +601,66 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <span class="shopping-cart__product-price">${{ $item->price }}</span>
+                                            <span class="shopping-cart__product-price">Rs/- {{ $item->price }}</span>
                                         </td>
                                         <td>
-                                            <div class="qty-control position-relative ms-5">
+                                            <div class="qty-control">
                                                 <div class="qty-control__reduce">-</div>
-                                                <input type="number" name="quantity" value="1" min="1"
-                                                    class="qty-control__number text-center">
+                                                <input type="number" name="quantity" value="{{ $item->qty }}"
+                                                    min="1" class="qty-control__number">
                                                 <div class="qty-control__increase">+</div>
                                             </div>
                                         </td>
                                         <td>
-                                            <span class="shopping-cart__subtotal">{{ $item->Subtotal() }}</span>
+                                            <span class="shopping-cart__subtotal">Rs/- {{ $item->subtotal() }}</span>
                                         </td>
                                         <td>
-                                            <a href="#" class="remove-cart">
-                                                <svg width="10" height="10" viewBox="0 0 10 10" fill="#767676"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M0.259435 8.85506L9.11449 0L10 0.885506L1.14494 9.74056L0.259435 8.85506Z" />
-                                                    <path
-                                                        d="M0.885506 0.0889838L9.74057 8.94404L8.85506 9.82955L0 0.97449L0.885506 0.0889838Z" />
-                                                </svg>
-                                            </a>
+                                            <a href="#" class="remove-cart">❌</a>
                                         </td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
                         <div class="cart-table-footer">
-                            <form action="#" class="position-relative bg-body">
+                            <a href="{{ route('products') }}" class="btn btn-light">Continue Shopping</a>
+                            <a href="javascript:void(0)" id="clear-cart" class="btn btn-light">Clear Cart</a>
+
+                            {{-- <form action="#" class="position-relative bg-body">
                                 <input class="form-control" type="text" name="coupon_code" placeholder="Coupon Code">
                                 <input class="btn-link fw-medium position-absolute top-0 end-0 h-100 px-4" type="submit"
                                     value="APPLY COUPON">
-                            </form>
+                            </form> --}}
                             {{-- <button class="btn btn-light">UPDATE CART</button>
                              --}}
-                            <a href="{{ route('products') }}"class="btn btn-light">UPDATE CART</a>
+                            <a href="{{ route('checkout') }}"class="btn btn-light">Confirm Order</a>
                         </div>
                     </div>
-                    <div class="shopping-cart__totals-wrapper ">
-                        <div class="sticky-content">
-                            <div class="shopping-cart__totals">
-                                <h3>Cart Totals</h3>
-                                <table class="cart-totals">
-                                    <tbody>
-                                        <tr>
-                                            <th>Subtotal</th>
-                                            <td class="shopping-cart__subtotal">$ {{ Cart::instance('cart')->subtotal() }}</td>
-                                            {{-- <td>RS/-{{ Cart::instance('cart')->subtotal() }}</td> --}}
-                                        </tr>
-                                        <tr>
-                                            <th>Shipping</th>
-                                            <td>Free</td>
-                                        </tr>
-                                        <tr>
-                                            <th>VAT</th>
-                                            <td>$10</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Total</th>
-                                            <td>$ {{ Cart::instance('cart')->subtotal() }}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <a href="{{route('checkout')}}" class="btn btn-outline-primary btn-checkout">PROCEED TO CHECKOUT</a>
-                            </div>
-
+                   <div class="shopping-cart__totals-wrapper">
+                        <div class="shopping-cart__totals">
+                            <h3>Cart Totals</h3>
+                            <table class="cart-totals">
+                                <tbody>
+                                    <tr>
+                                        <th>Subtotal</th>
+                                        <td id="subtotal-cell">Rs/- 0</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Shipping</th>
+                                        <td>Free</td>
+                                    </tr>
+                                    <tr>
+                                        <th>VAT (10%)</th>
+                                        <td id="vat-cell">Rs/- 0</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Total</th>
+                                        <td id="total-cell">Rs/- 0</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <a href="{{ route('checkout') }}" class="btn btn-outline-primary btn-checkout">
+                                PROCEED TO CHECKOUT
+                            </a>
                         </div>
                     </div>
                 @else
@@ -682,77 +675,64 @@
         </div>
     </main>
     @push('scripts')
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const cartRows = document.querySelectorAll('.cart-table tbody tr');
+ <script>
+            function updateCartTotals() {
+                let subtotal = 0;
 
-                function updateCartTotals() {
-                    let subtotal = 0;
-
-                    cartRows.forEach(row => {
-                        const qtyInput = row.querySelector('.qty-control__number');
-                        const priceText = row.querySelector('.shopping-cart__product-price');
-                        const subtotalText = row.querySelector('.shopping-cart__subtotal');
-
-                        const qty = parseInt(qtyInput.value) || 1;
-                        const price = parseFloat(priceText.textContent.replace('$', '')) || 0;
-
-                        const productSubtotal = qty * price;
-                        subtotalText.textContent = `$${productSubtotal.toFixed(2)}`;
-
-                        subtotal += productSubtotal;
-                    });
-
-                    // Update subtotal and total
-                    const subtotalCell = document.querySelector('.cart-totals td:first-child');
-                    const totalCell = document.querySelector('.cart-totals td:last-child');
-
-                    const vat = 19; // You can make this dynamic too
-                    const total = subtotal + vat;
-
-                    subtotalCell.textContent = `$${subtotal.toFixed(2)}`;
-                    totalCell.textContent = `$${total.toFixed(2)}`;
-                }
-
-                cartRows.forEach(row => {
+                document.querySelectorAll('.cart-table tbody tr').forEach(row => {
                     const qtyInput = row.querySelector('.qty-control__number');
-                    const btnMinus = row.querySelector('.qty-control__reduce');
-                    const btnPlus = row.querySelector('.qty-control__increase');
+                    const priceText = row.querySelector('.shopping-cart__product-price');
+                    const subtotalText = row.querySelector('.shopping-cart__subtotal');
 
-                    btnMinus.addEventListener('click', () => {
-                        let qty = parseInt(qtyInput.value) || 1;
-                        if (qty > 1) {
-                            qtyInput.value = qty - 1;
-                            updateCartTotals();
-                        }
-                    });
+                    if (!qtyInput || !priceText || !subtotalText) return;
 
-                    btnPlus.addEventListener('click', () => {
-                        let qty = parseInt(qtyInput.value) || 1;
-                        qtyInput.value = qty + 1;
-                        updateCartTotals();
-                    });
+                    const qty = parseInt(qtyInput.value) || 1;
+                    const price = parseFloat(priceText.textContent.replace('Rs/-', '').trim()) || 0;
 
-                    qtyInput.addEventListener('change', () => {
-                        let qty = parseInt(qtyInput.value);
-                        if (isNaN(qty) || qty < 1) {
-                            qtyInput.value = 1;
-                        }
-                        updateCartTotals();
-                    });
+                    const productSubtotal = qty * price;
+                    subtotalText.textContent = `Rs/- ${productSubtotal.toFixed(1)}`;
+
+                    subtotal += productSubtotal;
                 });
 
-                updateCartTotals(); // Initialize totals on page load
+                const vat = subtotal * 0.10; // 18% VAT
+                const total = subtotal + vat;
+
+                document.getElementById('subtotal-cell').textContent = `Rs/- ${subtotal.toFixed(1)}`;
+                document.getElementById('vat-cell').textContent = `Rs/- ${vat.toFixed(1)}`;
+                document.getElementById('total-cell').textContent = `Rs/- ${total.toFixed(1)}`;
+            }
+
+            // Run on page load
+            document.addEventListener("DOMContentLoaded", updateCartTotals);
+
+            // Run when quantity changes
+            document.addEventListener("input", function(e) {
+                if (e.target.classList.contains("qty-control__number")) {
+                    updateCartTotals();
+                }
             });
-            document.querySelectorAll('.remove-cart').forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
 
-                    const row = this.closest('tr');
-                    row.remove(); // remove the product row from DOM
+            // Run when plus/minus clicked
+            document.addEventListener("click", function(e) {
+                if (e.target.classList.contains("qty-control__increase")) {
+                    const input = e.target.parentElement.querySelector(".qty-control__number");
+                    input.value = parseInt(input.value) + 1;
+                    updateCartTotals();
+                }
+                if (e.target.classList.contains("qty-control__reduce")) {
+                    const input = e.target.parentElement.querySelector(".qty-control__number");
+                    if (parseInt(input.value) > 1) {
+                        input.value = parseInt(input.value) - 1;
+                        updateCartTotals();
+                    }
+                }
+            });
 
-                    updateCartTotals(); // update total after removal
-                });
+            // Clear cart
+            document.getElementById("clear-cart").addEventListener("click", function() {
+                document.querySelector(".cart-table tbody").innerHTML = "";
+                updateCartTotals();
             });
         </script>
     @endpush

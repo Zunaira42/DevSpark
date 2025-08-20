@@ -2021,9 +2021,7 @@ section,
     padding-top: 3.125rem;
     flex-grow: 1;
 }
-.shopping-cart__totals-wrapper .sticky-content {
-    padding-top: 3.125rem;
-}
+
 .shopping-cart__totals-wrapper
     .mobile_fixed-btn_wrapper
     .button-wrapper:not(.fixed-btn) {
