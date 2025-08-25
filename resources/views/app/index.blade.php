@@ -18,7 +18,7 @@
                     We bring value and innovation to your screen.<br>
                     Shop smart. Shop easy. Only at DevSpark.</p>
                 <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
-                    <a href="{{ route('products') }}" class="btn btn-product">View Products</a>
+                    <a href="{{ route('products') }}" class="btn btn-outline-light">View Products</a>
                 </div>
         </section><!-- /Hero Section -->
 
@@ -257,7 +257,7 @@
 
                 <div class="text-center mt-5">
 
-                    <a href="{{ route('products') }}" class="btn btn-product">
+                    <a href="{{ route('products') }}" class="btn btn-outline-secondary">
                         <i class="bi bi-collection me-2"></i>ALL Products
                     </a>
                 </div>

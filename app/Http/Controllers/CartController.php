@@ -4,57 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Surfsidemedia\Shoppingcart\Facades\Cart;
 
 class CartController extends Controller
 {
-    public function addToCart($id)
-    {
-        $product = Product::findOrFail($id);
-
-        $cart = session()->get('cart', []);
-
-        if (isset($cart[$id])) {
-            $cart[$id]['quantity']++;
-        } else {
-            $cart[$id] = [
-                "name" => $product->name,
-                "quantity" => 1,
-                "price" => $product->price,
-                "image" => $product->image,
-                "description" => $product->description
-            ];
-        }
-
-        session()->put('cart', $cart);
-
-         if (request()->ajax()) {
-        return response()->json(['status' => 'success', 'message' => 'Added to cart']);
-    }
-
-
-
-        return redirect()->route('cart.index')->with('success', 'Added to cart!');
-    }
-
     public function index()
     {
-        return view('app.cart');
+        $items = Cart::instance('cart')->content();
+        return view('app.cart', compact('items'));
     }
-    public function updateQuantity(Request $request)
-{
-    $itemKey = $request->item_key;
-    $quantity = $request->quantity;
+    public function add_to_cart(Request $request)
+    {
+        $product = Product::findOrFail($request->product_id);
 
-    $cart = session()->get('cart', []);
+        Cart::instance('cart')->add(
+            $product->id,
+            $product->name,
+            1,
+            $product->price
+        )->associate(\App\Models\Product::class);
 
-    if (isset($cart[$itemKey])) {
-        $cart[$itemKey]['quantity'] = $quantity;
-        session()->put('cart', $cart);
-
-        return response()->json(['success' => true, 'message' => 'Quantity updated']);
+        return response()->json(['message' => 'Product added to cart']);
     }
-
-    return response()->json(['success' => false, 'message' => 'Item not found']);
-}
-
 }

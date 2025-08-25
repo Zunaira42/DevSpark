@@ -37,9 +37,10 @@
 
         .card {
             border-radius: 10px;
-            border: 2px solid rgb(19, 21, 19);
+            /* border: 2px solid rgb(19, 21, 19); */
             margin-top: -50px;
-            background-color: #f5f6f5;
+            /* background-color: #f5f6f5; */
+            background-color: #f6f9ff;
             margin-bottom: -50px;
         }
 
@@ -131,14 +132,14 @@
     </section>
 
     {{-- products --}}
-    <section id="products" class="product py-5">
+    <section id="products" class="product section light-background py-5">
         <div class="container">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
                         @foreach ($products as $product)
                             <div class="col-md-3 ">
-                                <div class="product-card mt-3">
+                                <div class="product-card  mt-3">
                                     <div class="product-img">
                                         <img src="{{ asset('images/' . $product->image) }}" alt="{{ $product->name }}"
                                             class="img-fluid">
@@ -151,9 +152,12 @@
                                         </div>
                                     </div>
                                     <div class="product-buttons mt-3">
-                                        <form method="POST" action="{{ route('cart.add', $product->id) }}"
+                                        <form name="addtocart-form" method="POST" action="{{ route('cart.add') }}"
                                             class="d-inline add-to-cart-form">
                                             @csrf
+                                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                            <input type="hidden" name="name" value="{{ $product->name }}">
+                                            <input type="hidden" name="price" value="{{ $product->price }}">
                                             <button type="submit" class="btn btn-cart">Add to Cart</button>
                                         </form>
 
@@ -163,6 +167,11 @@
                             </div>
                         @endforeach
                     </div>
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-center">
+                        <a href="{{ route('cart.index') }}" class="btn btn-secondary" style="width: 20%;">Go To Cart </a>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>
