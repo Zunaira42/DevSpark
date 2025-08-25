@@ -37,7 +37,7 @@
         }
 
         main {
-            background: rgb(220, 219, 219);
+            background: #f1f4fa;
         }
 
         .shop-checkout {
@@ -49,7 +49,8 @@
             font-weight: 800;
             margin-bottom: 2.5rem;
             text-align: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #e9985a 0%, #764ba2 100%);
+            /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -84,7 +85,9 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            background-color:  #ff4a17;
+            /* background: linear-gradient(90deg, #f88055 0%, #ee9446 100%); */
+            /* background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); */
             transform: scaleX(0);
             transition: transform 0.3s ease;
         }
@@ -107,7 +110,8 @@
             font-weight: 900;
             display: block;
             margin-bottom: 0.75rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
+            background-color:  #ff4a17;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -194,7 +198,8 @@
         .qty-control__reduce,
         .qty-control__increase {
             cursor: pointer;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
+            background: linear-gradient(135deg, #ea9f66 0%, #ff4a17 100%);
             color: white;
             padding: 0.5rem 0.75rem;
             border-radius: 8px;
@@ -301,7 +306,7 @@
 
         .cart-table-footer input[type="submit"] {
             border: none;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
             color: white;
             font-weight: 700;
             cursor: pointer;
@@ -350,7 +355,7 @@
             color: #2d3748;
             text-align: center;
             padding-bottom: 1rem;
-            border-bottom: 3px solid #667eea;
+            border-bottom: 3px solid  #ff4a17;
         }
 
         .cart-totals th,
@@ -375,7 +380,7 @@
         .cart-totals tr:last-child td {
             border-bottom: none;
             font-size: 1.25rem;
-            color: #667eea;
+            color: black;
             padding-top: 1.5rem;
         }
 
@@ -407,7 +412,8 @@
             font-size: 1.2rem;
             font-weight: 800;
             border-radius: 12px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
+            background: linear-gradient(135deg, #ea9f66 0%, #ff4a17 100%);
             border: none;
             color: white;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);

@@ -18,49 +18,11 @@ use App\Http\Controllers\app\ProductController as ControllersProductController;
 |--------------------------------------------------------------------------
 */
 
+
+// ADMIN ROUTES
 Route::get('/welcome', function () {
     return view('layouts.welcome');
 });
-Route::get('/home', function () {
-    return view('app.index');
-})->name('home');
-
-Route::get('/products', [ControllersProductController::class, 'products'])->name('products');
-
-Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-Route::post('/cart/add', [CartController::class, 'add_to_Cart'])->name('cart.add');
-
-Route::post('/update-cart-quantity', [CartController::class, 'updateQuantity'])->name('cart.updateQuantity');
-
-Route::post('checkout', [AppCheckoutController::class, 'store'])->name('checkout.store');
-
-Route::get('/thank-you', function () {
-    return view('app.thank-you');
-})->name('thank-you');
-// Buy now redirect route (for unauthenticated users)
-Route::get('/buy-now-redirect', function () {
-    if (!auth()->check()) {
-        session(['buy_now_redirect' => true]);
-        return redirect()->route('register');
-    }
-    return redirect()->route('checkout');
-})->name('buy.now.redirect');
-
-// Protected checkout route
-Route::middleware(['auth'])->group(function () {
-    Route::get('/checkout', function () {
-        return view('app.checkout');
-    })->name('checkout');
-    Route::get('/buy-now', function () {
-        return redirect()->route('checkout');
-    })->name('buy.now');
-});
-
-Route::get('/order', [AppOrderController::class, 'index'])->name('order');
-Route::post('/order', [AppOrderController::class, 'store'])->name('order.store');
-
-
-// ADMIN ROUTES
 
 Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
 
@@ -86,5 +48,48 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/home', function () {
+    return view('app.index');
+})->name('home');
+
+Route::get('/products', [ControllersProductController::class, 'products'])->name('products');
+
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart/add', [CartController::class, 'add_to_Cart'])->name('cart.add');
+Route::post('/update-cart-quantity', [CartController::class, 'updateQuantity'])->name('cart.updateQuantity');
+
+Route::post('checkout', [AppCheckoutController::class, 'store'])->name('checkout.store');
+
+// Buy now redirect route (for unauthenticated users)
+Route::get('/buy-now-redirect', function () {
+    if (!auth()->check()) {
+        session(['buy_now_redirect' => true]);
+        return redirect()->route('register');
+    }
+    return redirect()->route('checkout');
+})->name('buy.now.redirect');
+
+
+// Protected checkout route
+Route::middleware(['auth'])->group(function () {
+    Route::get('/checkout', function () {
+        return view('app.checkout');
+    })->name('checkout');
+    Route::get('/buy-now', function () {
+        return redirect()->route('checkout');
+    })->name('buy.now');
+});
+
+
+
+Route::get('/thank-you', function () {
+    return view('app.thank-you');
+})->name('thank-you');
+
+Route::get('/order', [AppOrderController::class, 'index'])->name('order');
+Route::post('/order', [AppOrderController::class, 'store'])->name('order.store');
+
+
 
 require __DIR__ . '/auth.php';

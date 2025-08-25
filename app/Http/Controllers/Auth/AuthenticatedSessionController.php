@@ -63,7 +63,6 @@ class AuthenticatedSessionController extends Controller
      */
     private function isAdmin($user): bool
     {
-        // Adjust this condition based on your admin identification logic
         return $user->role === 'admin' ||
             $user->email === 'admin@example.com' ||
             $user->is_admin === true;
@@ -81,6 +80,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/welcome');
+        return redirect('/home');
     }
 }

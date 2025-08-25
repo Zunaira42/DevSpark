@@ -37,9 +37,10 @@
 
         .card {
             border-radius: 10px;
-            border: 2px solid rgb(19, 21, 19);
+            /* border: 2px solid rgb(19, 21, 19); */
             margin-top: -50px;
-            background-color: #f5f6f5;
+            /* background-color: #f5f6f5; */
+            background-color: #f6f9ff;
             margin-bottom: -50px;
         }
 
@@ -131,14 +132,14 @@
     </section>
 
     {{-- products --}}
-    <section id="products" class="product py-5">
+    <section id="products" class="product section light-background py-5">
         <div class="container">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
                         @foreach ($products as $product)
                             <div class="col-md-3 ">
-                                <div class="product-card mt-3">
+                                <div class="product-card  mt-3">
                                     <div class="product-img">
                                         <img src="{{ asset('images/' . $product->image) }}" alt="{{ $product->name }}"
                                             class="img-fluid">
@@ -166,6 +167,11 @@
                             </div>
                         @endforeach
                     </div>
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-center">
+                        <a href="{{ route('cart.index') }}" class="btn btn-secondary" style="width: 20%;">Go To Cart </a>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>

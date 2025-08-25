@@ -24,7 +24,7 @@ class CheckoutController extends Controller
             'email' => 'required|email',
             'phone_num' => 'required|string|max:20',
             'address' => 'required|string|max:500',
-            'payment_method' => 'required|in:card,paypal',
+            'payment_method' => 'required',
             'city' => 'required|string',
             'state' => 'required|string|max:100',
             'zip' => 'required|string|max:10',
@@ -59,7 +59,7 @@ class CheckoutController extends Controller
             $total += $price * $quantity;
         }
 
-     
+
         $order = Order::create([
             'user_id' => Auth::id(),
             'total_price' => $total,
@@ -86,10 +86,7 @@ class CheckoutController extends Controller
             'state' => $validated['state'],
             'zip' => $validated['zip'],
         ]);
-
-        // Step 8: Clear cart
         session()->forget('cart');
-
         return redirect()->route('thank-you')->with('success', 'Order placed successfully!');
     }
 }
