@@ -62,7 +62,7 @@
             background-color: #fff;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
             text-align: center;
-            height: 450px;
+            /* height: 450px; */
         }
 
         .product-img img {
@@ -138,7 +138,7 @@
                 <div class="card-body">
                     <div class="row">
                         @foreach ($products as $product)
-                            <div class="col-md-3 ">
+                            <div class="col-lg-3 col-md-6 col-12 ">
                                 <div class="product-card  mt-3">
                                     <div class="product-img">
                                         <img src="{{ asset('images/' . $product->image) }}" alt="{{ $product->name }}"
@@ -151,7 +151,7 @@
                                             {{ \Illuminate\Support\Str::limit($product->description, 70, '...') }}
                                         </div>
                                     </div>
-                                    <div class="product-buttons mt-3">
+                                    <div class="product-buttons mt-3 mb-4">
                                         <form name="addtocart-form" method="POST" action="{{ route('cart.add') }}"
                                             class="d-inline add-to-cart-form">
                                             @csrf
@@ -169,7 +169,7 @@
                     </div>
                     <div class="row">
                         <div class="col-12 d-flex justify-content-center">
-                        <a href="{{ route('cart.index') }}" class="btn btn-secondary" style="width: 20%;">Go To Cart </a>
+                        <a href="{{ route('cart.index') }}" class="btn btn-secondary mt-5 mb-5" style="width: 30%;">Go To Cart </a>
                     </div>
                 </div>
                 </div>

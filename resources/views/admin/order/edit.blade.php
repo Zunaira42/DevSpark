@@ -53,9 +53,9 @@
                     </div>
 
                     <div class="col-12 mb-4">
-                        <label for="price" class="col-form-label">Price</label>
-                        <input type="number" name="price" id="price" class="form-control"
-                            value="{{ old('price', $product->price) }}">
+                        <label for="total_price" class="col-form-label">Price</label>
+                        <input type="number" name="total_price" id="total_price" class="form-control"
+                            value="{{ old('total_price', $product->total_price) }}">
                     </div>
 
                     <div class="col-12 mb-4">

@@ -24,16 +24,16 @@ class OrderController extends Controller
         return view('admin/order.index', compact('orders'));
     }
 
-    public function store(Request $request)
-    {
+    // public function store(Request $request)
+    // {
 
 
-        $order = Order::create([
-            'user_id' => Auth::id(),
-            'total_price' => $request->total_price,
-            'status' => 'pending', // ya jo default status chahiye
-        ]);
+    //     $order = Order::create([
+    //         'user_id' => Auth::id(),
+    //         'total_price' => $request->total_price,
+    //         'status' => 'pending', // ya jo default status chahiye
+    //     ]);
 
-        return redirect()->route('orders.index')->with('success', 'Order created successfully.');
-    }
+    //     return redirect()->route('orders.index')->with('success', 'Order created successfully.');
+    // }
 }

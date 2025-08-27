@@ -39,6 +39,7 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
+         dd($request->all());
         $validated = $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:checkouts,email',

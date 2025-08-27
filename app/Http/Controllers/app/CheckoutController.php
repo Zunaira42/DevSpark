@@ -31,34 +31,49 @@ class CheckoutController extends Controller
         ]);
 
         $cart = session('cart');
+
         if (!$cart || count($cart) === 0) {
             return redirect()->back()->with('error', 'Your cart is empty.');
-        }
-
-        if ($cart instanceof \Illuminate\Support\Collection) {
-            $cart = $cart->toArray();
         }
 
         $total = 0;
         $validItems = [];
 
-        foreach ($cart as $item) {
-            $productId = $item['id'] ?? $item['product_id'] ?? null;
-            $price = floatval(preg_replace('/[^\d.]/', '', $item['price'] ?? 0));
-            $quantity = intval($item['quantity'] ?? 1);
+        // Loop through the cart array
+        foreach ($cart as $cartCollection) {
+            // Check if it's a Collection with cart items
+            if ($cartCollection instanceof \Illuminate\Support\Collection) {
+                // Loop through each CartItem in the collection
+                foreach ($cartCollection as $cartItem) {
+                    $productId = $cartItem->id;
+                    $price = floatval($cartItem->price);
+                    $quantity = intval($cartItem->qty);
 
-            if (!$productId || $price <= 0 || $quantity <= 0) continue;
+                    if (!$productId || $price <= 0 || $quantity <= 0) {
+                        Log::info('Skipping invalid item:', [
+                            'productId' => $productId,
+                            'price' => $price,
+                            'quantity' => $quantity
+                        ]);
+                        continue;
+                    }
 
-            $validItems[] = [
-                'product_id' => $productId,
-                'price' => $price,
-                'quantity' => $quantity,
-                'total' => $price * $quantity,
-            ];
+                    $validItems[] = [
+                        'product_id' => $productId,
+                        'price' => $price,
+                        'quantity' => $quantity,
+                        'total' => $price * $quantity,
+                    ];
 
-            $total += $price * $quantity;
+                    $total += $price * $quantity;
+                }
+            }
         }
 
+        if (empty($validItems)) {
+            Log::error('No valid items found in cart', ['cart' => $cart]);
+            return redirect()->back()->with('error', 'No valid items found in cart.');
+        }
 
         $order = Order::create([
             'user_id' => Auth::id(),
@@ -86,6 +101,7 @@ class CheckoutController extends Controller
             'state' => $validated['state'],
             'zip' => $validated['zip'],
         ]);
+
         session()->forget('cart');
         return redirect()->route('thank-you')->with('success', 'Order placed successfully!');
     }

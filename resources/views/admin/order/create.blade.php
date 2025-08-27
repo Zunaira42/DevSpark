@@ -6,10 +6,7 @@
     <form action="{{ route('orders.store') }}" method="POST">
         @csrf
 
-        <div class="mb-3">
-            <label>User ID</label>
-            <input type="number" name="user_id" class="form-control" required>
-        </div>
+
 
         <div class="mb-3">
             <label>Total Price</label>
