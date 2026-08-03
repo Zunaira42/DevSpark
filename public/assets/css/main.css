@@ -1,6 +1,7 @@
 /* Fonts */
 :root {
-    --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto,
+    --default-font:
+        "Roboto", system-ui, -apple-system, "Segoe UI", Roboto,
         "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
         "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
         "Noto Color Emoji";
@@ -232,8 +233,7 @@ h6 {
     --default-color: #ffffff;
     --heading-color: #ffffff;
     color: var(--default-color);
-    /* background-color: var(--background-color); */
-    background-color: rgb(18, 16, 16);
+    background-color: rgb(204, 240, 196);
     padding: 20px 0;
     transition: all 0.5s;
     z-index: 997;
@@ -252,26 +252,27 @@ h6 {
     font-size: 30px;
     margin: 0;
     font-weight: 700;
-    color: var(--heading-color);
+    /* color: var(--heading-color); */
+    color: darkgreen;
 }
 
 .header .cta-btn,
 .header .cta-btn:focus {
-    color: var(--contrast-color);
+    color: darkgreen;
     font-size: 13px;
     padding: 7px 25px;
     margin: 0 0 0 30px;
     border-radius: 4px;
     transition: 0.3s;
     text-transform: uppercase;
-    border: 2px solid var(--contrast-color);
+    border: 2px solid darkgreen;
 }
 
 .header .cta-btn:hover,
 .header .cta-btn:focus:hover {
     color: var(--contrast-color);
-    background: var(--accent-color);
-    border-color: var(--accent-color);
+    background: darkgreen;
+    border-color: lightgreen;
 }
 
 @media (max-width: 1200px) {
@@ -332,7 +333,7 @@ h6 {
 
     .navmenu a,
     .navmenu a:focus {
-        color: var(--nav-color);
+        color: darkgreen;
         font-size: 13px;
         padding: 0 2px;
         font-family: var(--nav-font);
@@ -352,6 +353,11 @@ h6 {
         line-height: 0;
         margin-left: 5px;
         transition: 0.3s;
+        color: darkgreen;
+    }
+    .nav-menu a:hover,
+    .nav-menu a.active {
+        color: darkgreen;
     }
 
     .navmenu > ul > li > a:before {
@@ -360,7 +366,7 @@ h6 {
         height: 2px;
         bottom: -6px;
         left: 0;
-        background-color: var(--nav-hover-color);
+        background-color: darkgreen;
         visibility: hidden;
         width: 0px;
         transition: all 0.3s ease-in-out 0s;
@@ -373,11 +379,11 @@ h6 {
         width: 100%;
     }
 
-    .navmenu li:hover > a,
+    /* .navmenu li:hover > a,
     .navmenu .active,
     .navmenu .active:focus {
         color: color-mix(in srgb, var(--nav-color) 90%, white 15%);
-    }
+    } */
 
     .navmenu .dropdown ul {
         margin: 0;
@@ -958,68 +964,56 @@ section,
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
-.hero {
-    width: 100%;
-    min-height: 100vh;
-    position: relative;
-    padding: 80px 0;
+#hero {
+    height: 65vh;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 0.5rem;
+    background-color: rgb(204, 240, 196);
+    border-top: 1px solid darkgreen;
 }
 
 .hero img {
-    position: absolute;
-    inset: 0;
-    display: block;
-    width: 100%;
-    height: 90%;
-    object-fit: cover;
-    z-index: 1;
+    margin-left: -185px;
 }
-
-.hero:before {
-    content: "";
-    background: color-mix(in srgb, var(--background-color), transparent 30%);
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-}
-
 .hero .container {
     position: relative;
     z-index: 3;
 }
 
-.hero h2 {
+.hero h1 {
     margin: 0;
-    font-size: 44px;
+    font-size: 70px;
     font-weight: 700;
-    text-transform: uppercase;
+
+    color: darkgreen;
 }
 
 .hero p {
     color: color-mix(in srgb, var(--default-color), transparent 20%);
     margin: 10px 0 0 0;
-    font-size: 21px;
+    font-size: 18px;
+    color:darkgreen;
 }
 
 .hero .btn-get-started {
-    background: var(--accent-color);
-    color: var(--contrast-color);
+    color: darkgreen;
     font-weight: 400;
     font-size: 14px;
     letter-spacing: 1px;
     display: inline-block;
     padding: 10px 30px;
     border-radius: 4px;
+    border: 1px solid darkgreen;
     transition: 0.3s;
     text-transform: uppercase;
 }
 
 .hero .btn-get-started:hover {
-    background: color-mix(in srgb, var(--accent-color), transparent 20%);
+    background-color: darkgreen;
+    color: white;
+    border: 1px solid transpaarent;
 }
 
 .hero .btn-watch-video {
@@ -2193,8 +2187,6 @@ section,
     }
 }
 
-
-
 .shopping-cart .cart-table-footer {
     display: flex;
     justify-content: space-between;
@@ -2340,5 +2332,49 @@ section,
         border-bottom: 0;
         margin-bottom: 0;
         padding: 0.5rem 1rem;
+    }
+}
+.best-seller{
+    overflow:hidden;
+}
+
+.best-seller .text{
+    font-size:28px;
+    font-weight:600;
+    margin-bottom:20px;
+}
+
+.bestSellerSwiper{
+    width:100%;
+    overflow:hidden;
+}
+
+.bestSellerSwiper .swiper-slide{
+    width: calc((100% - 40px) / 3) !important; /* same as col-4 with 20px gap */
+}
+.slider-box-product{
+    overflow:hidden;
+}
+
+.slider-box-product img{
+    width:100%;
+    height:500px !important;
+    display:block;
+    object-fit: cover;      
+    object-position: center;
+    border-radius:0;
+}
+
+/* Tablet */
+@media(max-width:991px){
+    .bestSellerSwiper .swiper-slide{
+        width:50%;
+    }
+}
+
+/* Mobile */
+@media(max-width:767px){
+    .bestSellerSwiper .swiper-slide{
+        width:100%;
     }
 }
