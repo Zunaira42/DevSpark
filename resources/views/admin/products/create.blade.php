@@ -45,14 +45,14 @@
                 <div class="row">
                     <div class="col-12 mb-4">
                         <label for="name" class="col-form-label">Name</label>
-                        <input type="text" name="name" id="name" class="form-control"
-                            placeholder="Enter Product Name" value="{{ old('name') }}">
+                        <input type="text" name="name" id="name" class="form-control" placeholder="Enter Product Name"
+                            value="{{ old('name') }}">
                     </div>
 
                     <div class="col-12 mb-4">
                         <label for="price" class="col-form-label">Price</label>
-                        <input type="number" name="price" id="price" class="form-control" step="0.01"
-                            min="0" value="{{ old('price') }}">
+                        <input type="number" name="price" id="price" class="form-control" step="0.01" min="0"
+                            value="{{ old('price') }}">
                     </div>
 
                     <div class="col-12 mb-4">
@@ -64,8 +64,17 @@
                     </div>
 
                     <div class="col-12 mb-4">
+                        <label for="is_best_product" class="col-form-label">Is Best Product</label>
+                        <select name="is_best_product" id="is_best_product" class="form-select">
+                            <option value="1" {{ old('is_best_product') == '1' ? 'selected' : '' }}>Yes</option>
+                            <option value="0" {{ old('is_best_product') == '0' ? 'selected' : '' }}>No</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12 mb-4">
                         <label for="description" class="col-form-label">Description</label>
-                        <textarea name="description" id="description" rows="5" class="form-control">{{ old('description') }}</textarea>
+                        <textarea name="description" id="description" rows="5"
+                            class="form-control">{{ old('description') }}</textarea>
                     </div>
 
                     <div class="col-12 mb-4">

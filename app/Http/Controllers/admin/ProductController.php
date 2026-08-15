@@ -41,6 +41,7 @@ class ProductController extends Controller
             'name' => 'required',
             'price' => 'required',
             'stock' => 'required|boolean',
+            'is_best_product' => 'boolean',
             'description' => 'required',
             'image' => 'required|image'
         ]);
@@ -97,6 +98,7 @@ class ProductController extends Controller
             'name' => 'required',
             'price' => 'required',
             'stock' => 'required|boolean',
+            'is_best_product' => 'boolean',
             'description' => 'required',
             'image' => 'nullable|image'
         ]);

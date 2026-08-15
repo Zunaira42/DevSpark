@@ -66,6 +66,14 @@
                         </select>
                     </div>
 
+                     <div class="col-12 mb-4">
+                        <label for="is_best_product" class="col-form-label">Is Best Product</label>
+                        <select name="is_best_product" id="is_best_product" class="form-select">
+                            <option value="1" {{ old('is_best_product', $product->is_best_product) == '1' ? 'selected' : '' }}>Yes</option>
+                            <option value="0" {{ old('is_best_product', $product->is_best_product) == '0' ? 'selected' : '' }}>No</option>
+                        </select>
+                    </div>
+
                     <div class="col-12 mb-4">
                         <label for="description" class="col-form-label">Description</label>
                         <textarea name="description" id="description" rows="5" class="form-control">{{ old('description', $product->description) }}</textarea>

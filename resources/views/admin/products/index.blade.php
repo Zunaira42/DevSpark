@@ -30,6 +30,7 @@
                                             <th>#</th>
                                             <th>Product-Name</th>
                                             <th>Price</th>
+                                            <th>Is Best Product</th>
                                             <th>Stock</th>
                                             <th>View </th>
                                         </tr>
@@ -40,6 +41,7 @@
                                                 <td>{{ $product->id }}</td>
                                                 <td>{{ $product->name }}</td>
                                                 <td>{{ $product->price }}</td>
+                                                <td>{{ $product->is_best_product ? 'Yes' : 'No' }}</td>
                                                 <td>{{ $product->stock }}</td>
                                                 <td> <a href="{{ route('products.edit', $product->id) }}">
                                                         <i class="bi bi-eye-fill"></i>
