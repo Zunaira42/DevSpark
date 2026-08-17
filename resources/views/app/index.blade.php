@@ -30,111 +30,64 @@
         <section id="best-seller" class="best-seller py-5">
             <div class="container">
                 <div class="row">
-                    <div class="container section-title text-center">
+                    <div class="container section-title">
                         <h2>Best Sellings</h2>
                         <p>Choose Your Products</p>
                     </div>
-
                     <div class="col-12">
                         <div class="swiper bestSellerSwiper">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
-                                    <div class="slider-box-product">
+                                    <div class="best-products-card">
                                         <img src="{{ asset('assets/img/sliderimage.jpg') }}" alt="Best selling product">
                                         <div class="product-info mt-3">
                                             <h5 class="product-title">Regular Fit Long Sleeve Top</h5>
                                             <p class="product-price mb-2"><strong>$25.00</strong></p>
                                             <div class="product-rating">
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="swiper-slide">
-                                    <div class="slider-box-product">
+                                    <div class="best-products-card">
+                                        <img src="{{ asset('assets/img/girl3.png') }}" alt="Best selling product">
+                                        <div class="product-info mt-3">
+                                            <h5 class="product-title">Regular Fit Long Sleeve Top</h5>
+                                            <p class="product-price mb-2"><strong>$25.00</strong></p>
+                                            <div class="product-rating">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="best-products-card">
                                         <img src="{{ asset('assets/img/slider-img2.png') }}" alt="Best selling product">
                                         <div class="product-info mt-3">
-                                            <h5 class="product-title">Premium Style Jacket</h5>
-                                            <p class="product-price mb-2"><strong>$45.00</strong></p>
+                                            <h5 class="product-title">Regular Fit Long Sleeve Top</h5>
+                                            <p class="product-price mb-2"><strong>$25.00</strong></p>
                                             <div class="product-rating">
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star"></i>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="swiper-slide">
-                                    <div class="slider-box-product">
-                                        <img src="{{ asset('assets/img/slider-img3.png') }}" alt="Best selling product">
+                                    <div class="best-products-card">
+                                        <img src="{{ asset('assets/img/girl2.png') }}" alt="Best selling product">
                                         <div class="product-info mt-3">
-                                            <h5 class="product-title">Casual Summer Dress</h5>
-                                            <p class="product-price mb-2"><strong>$35.00</strong></p>
+                                            <h5 class="product-title">Regular Fit Long Sleeve Top</h5>
+                                            <p class="product-price mb-2"><strong>$25.00</strong></p>
                                             <div class="product-rating">
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="swiper-slide">
-                                    <div class="slider-box-product">
-                                        <img src="{{ asset('assets/img/slider-img.png') }}" alt="Best selling product">
+                                    <div class="best-products-card">
+                                        <img src="{{ asset('assets/img/sliderimage.jpg') }}" alt="Best selling product">
                                         <div class="product-info mt-3">
-                                            <h5 class="product-title">Classic Cotton Shirt</h5>
-                                            <p class="product-price mb-2"><strong>$30.00</strong></p>
+                                            <h5 class="product-title">Regular Fit Long Sleeve Top</h5>
+                                            <p class="product-price mb-2"><strong>$25.00</strong></p>
                                             <div class="product-rating">
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="swiper-slide">
-                                    <div class="slider-box-product">
-                                        <img src="{{ asset('assets/img/slider-img2.png') }}" alt="Best selling product">
-                                        <div class="product-info mt-3">
-                                            <h5 class="product-title">Elegant Evening Wear</h5>
-                                            <p class="product-price mb-2"><strong>$60.00</strong></p>
-                                            <div class="product-rating">
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="swiper-slide">
-                                    <div class="slider-box-product">
-                                        <img src="{{ asset('assets/img/slider-img3.png') }}" alt="Best selling product">
-                                        <div class="product-info mt-3">
-                                            <h5 class="product-title">Stylish Winter Coat</h5>
-                                            <p class="product-price mb-2"><strong>$75.00</strong></p>
-                                            <div class="product-rating">
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
-                                                <i class="bi bi-star-fill"></i>
                                             </div>
                                         </div>
                                     </div>
@@ -142,77 +95,82 @@
                             </div>
                         </div>
                     </div>
+                    <div class="product-btn">
+                        See All Products <i class="bi bi-arrow-right"></i>
+                    </div>
+
                 </div>
             </div>
         </section>
-        <!--  -->
-        <section id="products-cards" class="products-cards section">
 
-            <div class="container section-title">
-                <h2>Products</h2>
-                <p>Choose Your Products</p>
-            </div>
 
-            <div class="container">
-                <div class="row g-4 align-items-stretch">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="d-flex flex-column h-100 gap-3">
-                            <div class="products-card flex-fill" style="height: 50%;">
-                                <div class="products-image h-100">
-                                    <img src="assets/img/shoes.jpg" class="img-fluid w-100 h-100 object-fit-cover">
-                                    <img src="assets/img/ear-rings.jpg" class="hover-img w-100 h-100 object-fit-cover">
+        <!-- <section id="products-cards" class="products-cards section">
+
+                        <div class="container section-title">
+                            <h2>Products</h2>
+                            <p>Choose Your Products</p>
+                        </div>
+
+                        <div class="container">
+                            <div class="row g-4 align-items-stretch">
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="d-flex flex-column h-100 gap-3">
+                                        <div class="products-card flex-fill" style="height: 50%;">
+                                            <div class="products-image h-100">
+                                                <img src="assets/img/shoes.jpg" class="img-fluid w-100 h-100 object-fit-cover">
+                                                <img src="assets/img/ear-rings.jpg" class="hover-img w-100 h-100 object-fit-cover">
+                                            </div>
+                                        </div>
+                                        <div class="products-card flex-fill" style="height: 50%;">
+                                            <div class="products-image h-100">
+                                                <img src="assets/img/necklace.jpg" class="img-fluid w-100 h-100 object-fit-cover">
+                                                <img src="assets/img/make.jpg" class="hover-img w-100 h-100 object-fit-cover">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="products-card h-100">
+                                        <div class="products-image h-100">
+                                            <img src="assets/img/studs.jpg" alt="Gold Stud Earrings"
+                                                class="img-fluid w-100 h-100 object-fit-cover">
+                                            <img src="assets/img/lipstick.jpg" class="hover-img w-100 h-100 object-fit-cover">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="d-flex flex-column h-100 gap-3">
+                                        <div class="products-card flex-fill" style="height: 50%;">
+                                            <div class="products-image h-100">
+                                                <img src="assets/img/hat.jpg" alt="Hat 2"
+                                                    class="img-fluid w-100 h-100 object-fit-cover">
+                                                <img src="assets/img/watch.jpg" alt="Hat 2"
+                                                    class="hover-img w-100 h-100 object-fit-cover">
+                                            </div>
+                                        </div>
+                                        <div class="products-card flex-fill" style="height: 50%;">
+                                            <div class="products-image h-100">
+                                                <img src="assets/img/bag.jpg" alt="Bag 2"
+                                                    class="img-fluid w-100 h-100 object-fit-cover">
+                                                <img src="assets/img/home.jpg" alt="Bag 2"
+                                                    class="hover-img w-100 h-100 object-fit-cover">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
-                            <div class="products-card flex-fill" style="height: 50%;">
-                                <div class="products-image h-100">
-                                    <img src="assets/img/necklace.jpg" class="img-fluid w-100 h-100 object-fit-cover">
-                                    <img src="assets/img/make.jpg" class="hover-img w-100 h-100 object-fit-cover">
-                                </div>
+
+
+                            <div class="text-center mt-5">
+
+                                <a href="{{ route('products') }}" class="btn btn-outline-secondary">
+                                    <i class="bi bi-collection me-2"></i>ALL Products
+                                </a>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="products-card h-100">
-                            <div class="products-image h-100">
-                                <img src="assets/img/studs.jpg" alt="Gold Stud Earrings"
-                                    class="img-fluid w-100 h-100 object-fit-cover">
-                                <img src="assets/img/lipstick.jpg" class="hover-img w-100 h-100 object-fit-cover">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="d-flex flex-column h-100 gap-3">
-                            <div class="products-card flex-fill" style="height: 50%;">
-                                <div class="products-image h-100">
-                                    <img src="assets/img/hat.jpg" alt="Hat 2"
-                                        class="img-fluid w-100 h-100 object-fit-cover">
-                                    <img src="assets/img/watch.jpg" alt="Hat 2"
-                                        class="hover-img w-100 h-100 object-fit-cover">
-                                </div>
-                            </div>
-                            <div class="products-card flex-fill" style="height: 50%;">
-                                <div class="products-image h-100">
-                                    <img src="assets/img/bag.jpg" alt="Bag 2"
-                                        class="img-fluid w-100 h-100 object-fit-cover">
-                                    <img src="assets/img/home.jpg" alt="Bag 2"
-                                        class="hover-img w-100 h-100 object-fit-cover">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-
-                <div class="text-center mt-5">
-
-                    <a href="{{ route('products') }}" class="btn btn-outline-secondary">
-                        <i class="bi bi-collection me-2"></i>ALL Products
-                    </a>
-                </div>
-            </div>
-        </section>
+                    </section> -->
         <section id="services" class="services-2 section light-background">
             <div class="container section-title" data-aos="fade-up">
                 <h2>Services</h2>
@@ -294,20 +252,20 @@
             <div class="container" data-aos="fade-up" data-aos-delay="100">
                 <div class="swiper init-swiper">
                     <script type="application/json" class="swiper-config">
-                        {
-                            "loop": true,
-                            "speed": 300,
-                            "autoplay": {
-                                "delay": 2000
-                            },
-                            "slidesPerView": "auto",
-                            "pagination": {
-                                "el": ".swiper-pagination",
-                                "type": "bullets",
-                                "clickable": true
-                            }
-                        }
-                    </script>
+                                                        {
+                                                            "loop": true,
+                                                            "speed": 300,
+                                                            "autoplay": {
+                                                                "delay": 2000
+                                                            },
+                                                            "slidesPerView": "auto",
+                                                            "pagination": {
+                                                                "el": ".swiper-pagination",
+                                                                "type": "bullets",
+                                                                "clickable": true
+                                                            }
+                                                        }
+                                                    </script>
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="testimonial-item">
